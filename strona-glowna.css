@@ -1,0 +1,115 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fcae1e; /* Merigold */
+}
+
+.navbar {
+    background-color: #7a3803; /* Spice */
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    border: 2px solid #ffffff;
+    padding: 5px 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.navbar-menu {
+    cursor: pointer;
+}
+
+.menu-button {
+    width: 20px;
+    height: 2px;
+    background-color: #ffffff;
+    margin-bottom: 4px;
+}
+
+#menu-items {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    background-color: #fcae1e; /* Merigold */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+#menu-items li {
+    padding: 10px;
+    text-align: center;
+}
+
+#menu-items li a {
+    color: #7a3803; /* Spice */
+    text-decoration: none;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.user-profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-profile span {
+    font-size: 16px;
+}
+
+.logout-button {
+    background-color: #ffffff;
+    color: #7a3803; /* Spice */
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.welcome-message {
+    text-align: center;
+}
+
+.welcome-message h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.welcome-message p {
+    font-size: 18px;
+    color: #555555;
+}
