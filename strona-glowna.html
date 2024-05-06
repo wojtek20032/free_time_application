@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="strona-glowna.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">Campa</div>
+            <div class="navbar-menu" onclick="toggleMenu()">
+                <div class="menu-button"></div>
+                <ul id="menu-items">
+                    <li><a href="#">Terminarz</a></li>
+                    <li><a href="#">Eventy</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div class="user-info">
+            <div class="user-profile">
+                <img src="user-icon.png" alt="User Icon">
+                <span>Imię Użytkownika</span>
+            </div>
+            <button class="logout-button">Wyloguj</button>
+        </div>
+        <div class="welcome-message">
+            <h1>Witaj, Imię Użytkownika!</h1>
+            <p>Witaj na stronie Campa. Tutaj znajdziesz wszystkie potrzebne informacje.</p>
+        </div>
+    </div>
+
+    <script src="strona-glowna.js"></script>
+</body>
+
+</html>
