@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color:  #fcae1e;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    display: flex;
+    align-items: center;
+}
+
+header img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+header h1 {
+    font-size: 1.5em;
+    margin: 0;
+    color: #007bff; /* Kolor główny */
+}
+
+.profile-info {
+    margin-top: 30px;
+}
+
+.info {
+    margin-bottom: 20px;
+}
+
+.info label {
+    font-weight: bold;
+    display: block;
+    color: #555; /* Kolor tekstu */
+}
+
+.info input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9; 
+}
+
+.info input:focus {
+    border-color: #007bff; 
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #7a3803; 
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #7a3803; /* Spice */
+}
