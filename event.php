@@ -1,6 +1,7 @@
 <?php
 
 class Event {
+    private $name;
     private $description;
     private $date;
     private $location;
@@ -8,7 +9,8 @@ class Event {
     private $participating;
 
 
-    public function __construct($description, $date, $location, $note, $participating = 0) {
+    public function __construct($name, $description, $date, $location, $note, $participating = 0) {
+        $this->name = $name;
         $this->description = $description;
         $this->date = $date;
         $this->location = $location;
@@ -17,6 +19,13 @@ class Event {
     }
 
 
+    public function getName() {
+        return $this->name;
+    }
+
+    public function setName($name) {
+        $this->description = $name;
+    }
     public function getDescription() {
         return $this->description;
     }
