@@ -7,9 +7,8 @@ class User {
     private $hashedPassword;
 
     
-    public function __construct($name, $lastName, $email, $password) {
+    public function __construct($name,$email, $password) {
         $this->name = $name;
-        $this->lastName = $lastName;
         $this->email = $email;
         $this->setPassword($password); 
     }
@@ -23,18 +22,6 @@ class User {
     public function setName($name) {
         $this->name = $name;
     }
-
-   
-    public function getLastName() {
-        return $this->lastName;
-    }
-
- 
-    public function setLastName($lastName) {
-        $this->lastName = $lastName;
-    }
-
-    
     public function getEmail() {
         return $this->email;
     }
@@ -43,8 +30,6 @@ class User {
     public function setEmail($email) {
         $this->email = $email;
     }
-
-
     public function setPassword($password) {
         $this->hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     }

@@ -1,4 +1,4 @@
-
+<?php include('../user.php');?>
 <!DOCTYPE html>
 <?php
     session_start();
@@ -69,8 +69,9 @@
                     <?php 
                     if(isset($_POST['username_register']) && isset($_POST['email_register']) && isset($_POST['password_register'])){
                         $conn = new mysqli('localhost', 'root','','logins_db');
-                        $user = $_POST['username_register'];
-                        $mail = $_POST['email_register'];
+                        $user = new User($username, $mail);
+                         = $_POST['username_register'];
+                        = $_POST['email_register'];
                         $hash = sha1($_POST['password_register']);
                         $querry = "INSERT INTO users (Username, E_mail, hashed_password) VALUES ('$user','$mail','$hash')";
                         $conn->query($querry);
