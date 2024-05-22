@@ -54,7 +54,7 @@ class User {
         if ($this->email === $email && password_verify($password, $this->hashedPassword)) {
             return "Login successful!";
         } else {
-            return "Invalid email or password.";
+            return "Invalid email or password.";//połączenie z baza 
         }
     }
 

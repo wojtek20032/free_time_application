@@ -3,44 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminarz</title>
+    <title>Event Calendar</title>
     <link rel="stylesheet" href="terminarz.css">
 </head>
 <body>
-    
-    <div class="container">
-        <button onclick="window.location.href='../menu/menu.html'">Powrót do menu</button>
-        <h1>Terminarz</h1>
-        <div class="day-dropdown">
-            <select id="day-select">
-                <option value="monday">Poniedziałek</option>
-                <option value="tuesday">Wtorek</option>
-                <option value="wednesday">Środa</option>
-                <option value="thursday">Czwartek</option>
-                <option value="friday">Piątek</option>
-                <option value="saturday">Sobota</option>
-                <option value="sunday">Niedziela</option>
-            </select>
-        </div>
-        <div id="calendar">
-            <div class="calendar-hour">Godzina</div>
-            <div class="calendar-notes">
-                <div class="calendar-day">
-                    <div class="dot-blue"></div>
-                    <input type="text" placeholder="Notatka">
-                </div>
-                <div class="calendar-day">
-                    <div class="dot-red"></div>
-                    <input type="text" placeholder="Notatka">
-                </div>
-                <div class="calendar-day">
-                    <div class="dot-yellow"></div>
-                    <input type="text" placeholder="Notatka">
-                </div>
-            </div>
-        </div>
-        
+    <div class="calendar-container" style="display: none;">
+        <div id="calendar"></div>
     </div>
+    <button id="showEventsButton" class="styled-button">Show Events</button>
+
+    <div class="event-form" style="display: none;">
+        <h2>Add Event</h2>
+        <form id="eventForm">
+            <input type="hidden" id="idUzytkownika" value="1"> 
+            <input type="date" id="date" required>
+            <input type="text" id="name" placeholder="Event Name" required>
+            <textarea id="description" placeholder="Event Description" required></textarea>
+            <input type="text" id="location" placeholder="Location" required>
+            <textarea id="note" placeholder="Note" required></textarea>
+            <label>
+                <input type="checkbox" id="participating"> Participating
+            </label>
+            <button type="submit" class="styled-button">Add Event</button>
+        </form>
+    </div>
+    <button id="addEventButton" class="styled-button">Add Event</button>
     <script src="terminarz.js"></script>
 </body>
 </html>
