@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "logins_db";
+$dbname = "CAMPA";
 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
