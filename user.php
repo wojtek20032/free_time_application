@@ -2,16 +2,14 @@
 
 class User {
     private $name;
-    private $lastName;
     private $email;
-    private $hashedPassword;
+    private $password;
 
     
-    public function __construct($name, $lastName, $email, $password) {
+    public function __construct($name,$email,$hash) {
         $this->name = $name;
-        $this->lastName = $lastName;
         $this->email = $email;
-        $this->setPassword($password); 
+        $this->password = $hash;
     }
 
    
@@ -23,44 +21,31 @@ class User {
     public function setName($name) {
         $this->name = $name;
     }
-
-   
-    public function getLastName() {
-        return $this->lastName;
-    }
-
- 
-    public function setLastName($lastName) {
-        $this->lastName = $lastName;
-    }
-
-    
     public function getEmail() {
         return $this->email;
     }
 
+    public function getPassword(){
+        return $this->$password;
+    }
   
     public function setEmail($email) {
         $this->email = $email;
     }
-
-
-    public function setPassword($password) {
-        $this->hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    }
-
-  
-    public function login($email, $password) {
-        if ($this->email === $email && password_verify($password, $this->hashedPassword)) {
-            return "Login successful!";
-        } else {
-            return "Invalid email or password.";//połączenie z baza 
+    public function login($email, $password,$connection) {
+        $querry = mysqli_query($connection,"SELECT * from users");
+        while($result = mysqli_fetch_array($querry)){
+            if ($result['E_mail'] === $email && $result['hashed_password'] == $password) {
+                return true;
+            }
         }
+            return false;//połączenie z baza 
+        
     }
 
 
     public function changePassword($currentPassword, $newPassword) {
-        if (password_verify($currentPassword, $this->hashedPassword)) {
+        if (password_verify($currentPassword, $this->password)) {
             $this->setPassword($newPassword);
             return "Password changed successfully!";
         } else {
