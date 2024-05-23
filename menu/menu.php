@@ -60,7 +60,7 @@
                 aria-expanded="false"
                 style="padding: 0%"
               >
-                <img src="icons/menu.png" />
+                <img src="../icons/menu.png" />
               </button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="../calendar/terminarz.html">Terminarz</a></li>
@@ -78,7 +78,7 @@
                 aria-expanded="false"
                 style="padding: 0%"
               >
-                <img src="icons/user.png" />
+                <img src="../icons/user.png" />
               </button>
               <ul
                 class="dropdown-menu dropdown-menu-right"
@@ -114,7 +114,7 @@
     </main>
     <footer>
       <button onclick="openGoogleMaps()">
-        <a href="#"><img src="icons/placeholder.png" /></a>
+        <a href="#"><img src="../icons/placeholder.png" /></a>
       </button>
     </footer>
   </body>
