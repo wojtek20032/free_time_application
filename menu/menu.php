@@ -2,7 +2,7 @@
 <?php include_once('../db.php');?>
 <?php
     session_start();
-    if(!isset($_SESSION['log_in'])){
+    if(!isset($_SESSION['User'])){
       header('location: ../login-register/index.php');
       session_unset();
       session_destroy(); //ensures that none of the session variables remain after accidental page opening
