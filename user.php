@@ -32,14 +32,14 @@ class User {
     public function setEmail($email) {
         $this->email = $email;
     }
-    public function login($email, $password,$connection) {
+    public static function login($email, $password,$connection) {
         $querry = mysqli_query($connection,"SELECT * from users");
         while($result = mysqli_fetch_array($querry)){
             if ($result['E_mail'] === $email && $result['hashed_password'] == $password) {
-                return true;
+                return $result;
             }
         }
-            return false;//połączenie z baza 
+            return null;//połączenie z baza 
         
     }
 

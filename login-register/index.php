@@ -43,11 +43,10 @@
             <?php 
                 if(isset($_POST['Login_button'])){
                     $pass = sha1($_POST['passwd']);
-                    $user_to_verify = new User("empty",$_POST['log'],$pass);
-                    $mail = $user_to_verify->getEmail();
-                    $result = $user_to_verify->login($mail,$pass,$conn);
-                    if($result === true){
+                    $result = User::login($_POST['log'],$pass,$conn);
+                    if($result){
                         unset($_POST['Login_button']);
+                        $_SESSION['User'] = new User($result['Username'],$result['E_mail'],$result['hashed_password']);
                         header('location: ../menu/menu.php');
                     }
                     else{

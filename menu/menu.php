@@ -1,5 +1,8 @@
+<?php include_once('../user.php');?>
+<?php include_once('../db.php');?>
 <?php
     session_start();
+    $user = $_SESSION['User'];
 ?>
 
 <!DOCTYPE html>
