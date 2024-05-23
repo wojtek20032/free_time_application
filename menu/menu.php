@@ -71,10 +71,10 @@
                 <li><a class="dropdown-item" href="../calendar/terminarz.html">Terminarz</a></li>
                 <li><a class="dropdown-item" href="https://onedrive.live.com/login/">OneDrive</a></li>
                 <li><a class="dropdown-item" href="https://github.com">GitHub</a></li>
-                <li><a class="dropdown-item" href="menu.html">Menu</a></li>
+                <li><a class="dropdown-item" href="menu.php">Menu</a></li>
               </ul>
             </div>
-            <a class="navbar-brand" href="menu.html"><h1>Kampa</h1></a>
+            <a class="navbar-brand" href="menu.php"><h1>Kampa</h1></a>
             <div class="dropdown">
               <button
                 class="btn btn-secondary"
