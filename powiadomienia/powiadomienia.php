@@ -38,10 +38,10 @@
                 <li><a class="dropdown-item" href="../calendar/terminarz.html">Terminarz</a></li>
                 <li><a class="dropdown-item" href="https://onedrive.live.com/login/">OneDrive</a></li>
                 <li><a class="dropdown-item" href="https://github.com">GitHub</a></li>
-                <li><a class="dropdown-item" href="menu.php">Menu</a></li>
+                <li><a class="dropdown-item" href="../menu/menu.php">Menu</a></li>
               </ul>
             </div>
-            <a class="navbar-brand" href="menu.php"><h1>Kampa</h1></a>
+            <a class="navbar-brand" href="../menu/menu.php"><h1>Kampa</h1></a>
             <div class="dropdown">
               <button
                 class="btn btn-secondary"
@@ -57,7 +57,7 @@
                 id="profile"
               >
                 <li><a class="dropdown-item" href="../profil/profil.html">Profil</a></li>
-                <li><a class="dropdown-item" href="#">Powiadomienia</a></li>
+                <li><a class="dropdown-item" href="../powiadomienia/powiadomienia.php">Powiadomienia</a></li>
                 <li><a class="dropdown-item" href="#">Wyloguj</a></li>
               </ul>
             </div>
