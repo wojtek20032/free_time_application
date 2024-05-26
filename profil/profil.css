@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color:  #fcae1e;
+    background-image: url('../icons/p2.jpg');
+    background-size: cover;
     margin: 0;
     padding: 0;
 }
@@ -32,7 +33,7 @@ header img {
 header h1 {
     font-size: 1.5em;
     margin: 0;
-    color: #007bff; /* Kolor główny */
+    color: #007bff;
 }
 
 .profile-info {
@@ -46,7 +47,7 @@ header h1 {
 .info label {
     font-weight: bold;
     display: block;
-    color: #555; /* Kolor tekstu */
+    color: #555;
 }
 
 .info input {
@@ -73,5 +74,5 @@ button {
 }
 
 button:hover {
-    background-color: #7a3803; /* Spice */
+    background-color: #7a3803; 
 }
