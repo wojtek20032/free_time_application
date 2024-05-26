@@ -82,7 +82,7 @@
                 class="dropdown-menu dropdown-menu-right"
                 id="profile"
               >
-                <li><a class="dropdown-item" href="../profil/profil.html">Profil</a></li>
+                <li><a class="dropdown-item" href="../profil/profil.php">Profil</a></li>
                 <li><a class="dropdown-item" href="../powiadomienia/powiadomienia.php">Powiadomienia</a></li>
                 <li><a class="dropdown-item" href="#">Wyloguj</a></li>
               </ul>
