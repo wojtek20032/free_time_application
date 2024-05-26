@@ -1,0 +1,20 @@
+body {
+    background-color: aliceblue;
+  }
+  main{
+    height: 1108px;
+  }
+  img {
+    width: 80px;
+    height: 80px;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #profile {
+    text-align: right;
+    left: auto !important;
+    right: 0 !important;
+  }
