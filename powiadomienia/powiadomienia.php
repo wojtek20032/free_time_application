@@ -24,7 +24,7 @@
 </head>
 <body>
 <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav class="navbar navbar-expand-lg">
         <div class="container-fluid" style="display: block">
           <div class="header">
             <div class="dropdown">
