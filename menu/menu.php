@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <?php require("../db.php"); ?>
 
 <!DOCTYPE html>
@@ -44,7 +47,7 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav class="navbar navbar-expand-lg">
         <div class="container-fluid" style="display: block">
           <div class="header">
             <div class="dropdown">
@@ -90,7 +93,7 @@
     </header>
     <main>
       <div class="search-bar">
-        <nav class="navbar bg-body-tertiary">
+        <nav class="navbar">
           <div class="container-fluid">
             <form class="d-flex" role="search">
               <input
