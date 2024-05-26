@@ -1,66 +1,58 @@
 <?php
-
 class User {
+    private $id;
     private $name;
-    private $lastName;
     private $email;
-    private $hashedPassword;
+    private $password;
 
-    
-    public function __construct($name, $lastName, $email, $password) {
+    public function __construct($name, $email, $hash) {
         $this->name = $name;
-        $this->lastName = $lastName;
         $this->email = $email;
-        $this->setPassword($password); 
+        $this->password = $hash;
     }
 
-   
+    public function getId() {
+        return $this->id;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+    }
+
     public function getName() {
         return $this->name;
     }
 
-    
     public function setName($name) {
         $this->name = $name;
     }
 
-   
-    public function getLastName() {
-        return $this->lastName;
-    }
-
- 
-    public function setLastName($lastName) {
-        $this->lastName = $lastName;
-    }
-
-    
     public function getEmail() {
         return $this->email;
     }
 
-  
     public function setEmail($email) {
         $this->email = $email;
     }
 
-
     public function setPassword($password) {
-        $this->hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $this->password = $password;
     }
 
-  
-    public function login($email, $password) {
-        if ($this->email === $email && password_verify($password, $this->hashedPassword)) {
-            return "Login successful!";
-        } else {
-            return "Invalid email or password.";//połączenie z baza 
+    public function login($email, $password, $connection) {
+        $query = mysqli_query($connection, "SELECT * FROM users WHERE E_mail = '$email' AND hashed_password = '$password'");
+        if ($result = mysqli_fetch_array($query)) {
+            $this->setId($result['idUzytkownika']);
+            $this->setName($result['Username']);
+            $this->setEmail($result['E_mail']);
+            $this->setPassword($result['hashed_password']);
+            return true;
         }
+        return false;
     }
-
 
     public function changePassword($currentPassword, $newPassword) {
-        if (password_verify($currentPassword, $this->hashedPassword)) {
+        if (password_verify($currentPassword, $this->password)) {
             $this->setPassword($newPassword);
             return "Password changed successfully!";
         } else {
@@ -68,11 +60,12 @@ class User {
         }
     }
 
-   
     public function changeEmail($newEmail) {
         $this->email = $newEmail;
         return "Email changed successfully!";
     }
 }
+
+
 
 
