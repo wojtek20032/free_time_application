@@ -5,6 +5,9 @@ header {
   max-height: 90px;
   margin-bottom: 20px;
 }
+main{
+  height: 1108px;
+}
 img {
   width: 80px;
   height: 80px;
@@ -19,7 +22,9 @@ img {
   left: auto !important;
   right: 0 !important;
 }
+
 .search-bar {
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
