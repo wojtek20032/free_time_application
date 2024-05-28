@@ -1,9 +1,15 @@
 <?php
+session_start();
+if(!isset($_SESSION['user_id'])){
+    header('Location: ../login-register/index.php');
+    exit();
+}
+$user_id = $_SESSION['user_id'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require '../db.php';
     require 'event.php';
 
-    $idUzytkownika = $_POST['idUzytkownika'];
+    
     $name = $_POST['name'];
     $description = $_POST['description'];
     $date = $_POST['date'];
@@ -12,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $participating = isset($_POST['participating']) ? 1 : 0;
 
     $event = new Event($name, $description, $date, $location, $note, $participating);
-    if ($event->save($conn, $idUzytkownika)) {
+    if ($event->save($conn, $user_id)) {
         echo "<script>alert('Event added successfully');</script>";
     } else {
         echo "<script>alert('Error adding event.');</script>";
@@ -33,12 +39,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="calendar-container" style="display: none;">
         <div id="calendar"></div>
     </div>
-    <button id="showEventsButton" class="styled-button">Show Events</button>
+
+    <div class="buttons-container">
+        <button id="showEventsButton" class="styled-button">Show Events</button>
+        <button id="addEventButton" class="styled-button">Add Event</button>
+        <button onclick="window.location.href='../menu/menu.php'" class="styled-button">Powrót do menu</button>
+    </div>
 
     <div class="event-form" style="display: none;">
         <h2>Add Event</h2>
         <form id="eventForm" method="POST" action="terminarz.php">
-            <input type="hidden" id="idUzytkownika" name="idUzytkownika" value="1"> 
+            <input type="hidden" id="idUzytkownika" name="idUzytkownika" value="<?php echo $user_id; ?>"> 
             <label for="date">Date:</label>
             <input type="date" id="date" name="date" required>
             <label for="name">Event Name:</label>
@@ -55,10 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button type="submit" class="styled-button">Add Event</button>
         </form>
     </div>
-    <button id="addEventButton" class="styled-button">Add Event</button>
-    <button onclick="window.location.href='../menu/menu.php'" class="styled-button">Powrót do menu</button>
     <script src="terminarz.js"></script>
 </body>
 </html>
-
-

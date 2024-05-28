@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     let eventsVisible = false;
+    let formVisible = false;
 
     document.getElementById('showEventsButton').addEventListener('click', function() {
         const calendarContainer = document.querySelector('.calendar-container');
+        const eventForm = document.querySelector('.event-form');
         if (eventsVisible) {
             calendarContainer.style.display = 'none';
             this.textContent = 'Show Events';
@@ -10,13 +12,24 @@ document.addEventListener('DOMContentLoaded', function() {
             loadEvents();
             calendarContainer.style.display = 'block';
             this.textContent = 'Hide Events';
+            eventForm.style.display = 'none';  // Hide form if showing events
+            formVisible = false;
         }
         eventsVisible = !eventsVisible;
     });
 
     document.getElementById('addEventButton').addEventListener('click', function() {
         const eventForm = document.querySelector('.event-form');
-        eventForm.style.display = eventForm.style.display === 'block' ? 'none' : 'block';
+        const calendarContainer = document.querySelector('.calendar-container');
+        if (formVisible) {
+            eventForm.style.display = 'none';
+        } else {
+            eventForm.style.display = 'block';
+            calendarContainer.style.display = 'none'; 
+            document.getElementById('showEventsButton').textContent = 'Show Events';
+            eventsVisible = false;
+        }
+        formVisible = !formVisible;
     });
 
     document.getElementById('eventForm').addEventListener('submit', function(e) {
@@ -27,29 +40,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function loadEvents() {
     fetch('get_events.php')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(events => {
             console.log('Loaded events:', events);
             let calendar = document.getElementById('calendar');
             calendar.innerHTML = ''; 
-            events.forEach(event => {
-                let eventElement = document.createElement('div');
-                eventElement.classList.add('event');
-                eventElement.innerHTML = `
-                    <h3>${event.name}</h3>
-                    <p>${event.date}</p>
-                    <p>${event.description}</p>
-                    <p>${event.location}</p>
-                    <p>${event.note}</p>
-                    <p>Participating: ${event.participating ? 'Yes' : 'No'}</p>
-                `;
-                calendar.appendChild(eventElement);
-            });
+            if (events.length === 0) {
+                calendar.innerHTML = '<p class="no-events">No events found.</p>';
+            } else {
+                let table = document.createElement('table');
+                table.classList.add('events-table');
+                let header = table.createTHead();
+                let headerRow = header.insertRow(0);
+                let headers = ['Name', 'Date', 'Description', 'Location', 'Note', 'Participating'];
+                headers.forEach((headerText, index) => {
+                    let cell = headerRow.insertCell(index);
+                    cell.textContent = headerText;
+                    cell.classList.add('bold-header');
+                });
+
+                let tbody = table.createTBody();
+                events.forEach(event => {
+                    let row = tbody.insertRow();
+                    row.insertCell(0).textContent = event.name;
+                    row.insertCell(1).textContent = event.date;
+                    row.insertCell(2).textContent = event.description;
+                    row.insertCell(3).textContent = event.location;
+                    row.insertCell(4).textContent = event.note;
+                    row.insertCell(5).textContent = event.participating ? 'Yes' : 'No';
+                });
+
+                calendar.appendChild(table);
+            }
         })
         .catch(error => {
             console.error('Error loading events:', error);
@@ -79,17 +101,13 @@ function addEvent() {
         method: 'POST',
         body: formData,
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
-        }
-        return response.text();
-    })
+    .then(response => response.text())
     .then(message => {
         console.log('Server response:', message);
         alert(message);
         loadEvents();
-        document.querySelector('.event-form').style.display = 'none'; // Hide the form after adding event
+        document.querySelector('.event-form').style.display = 'none'; 
+        formVisible = false;
     })
     .catch(error => {
         console.error('Error adding event:', error);
