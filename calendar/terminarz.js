@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
             loadEvents();
             calendarContainer.style.display = 'block';
             this.textContent = 'Hide Events';
-            eventForm.style.display = 'none';  // Hide form if showing events
+            eventForm.style.display = 'none';
             formVisible = false;
         }
         eventsVisible = !eventsVisible;
@@ -24,8 +24,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (formVisible) {
             eventForm.style.display = 'none';
         } else {
+            clearForm();
+            document.getElementById('formTitle').textContent = 'Add Event';
+            document.getElementById('action').value = 'add';
+            document.getElementById('saveEventButton').style.display = 'inline-block';
+            document.getElementById('modifyEventButton').style.display = 'none';
+            document.getElementById('deleteEventButton').style.display = 'none';
             eventForm.style.display = 'block';
-            calendarContainer.style.display = 'none'; 
+            calendarContainer.style.display = 'none';
             document.getElementById('showEventsButton').textContent = 'Show Events';
             eventsVisible = false;
         }
@@ -34,7 +40,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('eventForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        addEvent();
+        const action = document.getElementById('action').value;
+        if (action === 'add') {
+            addEvent();
+        } else if (action === 'modify') {
+            modifyEvent();
+        }
+    });
+
+    document.getElementById('modifyEventButton').addEventListener('click', function() {
+        const event_id = document.getElementById('event_id').value;
+        document.getElementById('action').value = 'modify';
+        modifyEvent();
     });
 });
 
@@ -42,9 +59,9 @@ function loadEvents() {
     fetch('get_events.php')
         .then(response => response.json())
         .then(events => {
-            console.log('Loaded events:', events);
+            console.log('Loaded events:', events); 
             let calendar = document.getElementById('calendar');
-            calendar.innerHTML = ''; 
+            calendar.innerHTML = '';
             if (events.length === 0) {
                 calendar.innerHTML = '<p class="no-events">No events found.</p>';
             } else {
@@ -52,7 +69,7 @@ function loadEvents() {
                 table.classList.add('events-table');
                 let header = table.createTHead();
                 let headerRow = header.insertRow(0);
-                let headers = ['Name', 'Date', 'Description', 'Location', 'Note', 'Participating'];
+                let headers = ['Name', 'Date', 'Description', 'Location', 'Note', 'Participating', 'Actions'];
                 headers.forEach((headerText, index) => {
                     let cell = headerRow.insertCell(index);
                     cell.textContent = headerText;
@@ -68,6 +85,21 @@ function loadEvents() {
                     row.insertCell(3).textContent = event.location;
                     row.insertCell(4).textContent = event.note;
                     row.insertCell(5).textContent = event.participating ? 'Yes' : 'No';
+                    let actionsCell = row.insertCell(6);
+                    let editButton = document.createElement('button');
+                    editButton.textContent = 'Edit';
+                    editButton.classList.add('edit-button', 'styled-edit-button');
+                    editButton.addEventListener('click', function() {
+                        populateForm(event);
+                    });
+                    actionsCell.appendChild(editButton);
+                    let deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Delete';
+                    deleteButton.classList.add('delete-button', 'styled-delete-button');
+                    deleteButton.addEventListener('click', function() {
+                        deleteEvent(event.id);
+                    });
+                    actionsCell.appendChild(deleteButton);
                 });
 
                 calendar.appendChild(table);
@@ -79,6 +111,7 @@ function loadEvents() {
         });
 }
 
+
 function addEvent() {
     let idUzytkownika = document.getElementById('idUzytkownika').value;
     let date = document.getElementById('date').value;
@@ -88,7 +121,7 @@ function addEvent() {
     let note = document.getElementById('note').value;
     let participating = document.getElementById('participating').checked ? 1 : 0;
 
-    let formData = new URLSearchParams();
+    let formData = new FormData();
     formData.append('idUzytkownika', idUzytkownika);
     formData.append('date', date);
     formData.append('name', name);
@@ -106,7 +139,7 @@ function addEvent() {
         console.log('Server response:', message);
         alert(message);
         loadEvents();
-        document.querySelector('.event-form').style.display = 'none'; 
+        document.querySelector('.event-form').style.display = 'none';
         formVisible = false;
     })
     .catch(error => {
@@ -114,3 +147,5 @@ function addEvent() {
         alert('Error adding event: ' + error.message);
     });
 }
+
+
