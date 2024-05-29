@@ -5,27 +5,6 @@ if(!isset($_SESSION['user_id'])){
     exit();
 }
 $user_id = $_SESSION['user_id'];
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    require '../db.php';
-    require 'event.php';
-
-    
-    $name = $_POST['name'];
-    $description = $_POST['description'];
-    $date = $_POST['date'];
-    $location = $_POST['location'];
-    $note = $_POST['note'];
-    $participating = isset($_POST['participating']) ? 1 : 0;
-
-    $event = new Event($name, $description, $date, $location, $note, $participating);
-    if ($event->save($conn, $user_id)) {
-        echo "<script>alert('Event added successfully');</script>";
-    } else {
-        echo "<script>alert('Error adding event.');</script>";
-    }
-
-    $conn->close();
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,9 +26,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <div class="event-form" style="display: none;">
-        <h2>Add Event</h2>
-        <form id="eventForm" method="POST" action="terminarz.php">
-            <input type="hidden" id="idUzytkownika" name="idUzytkownika" value="<?php echo $user_id; ?>"> 
+        <h2 id="formTitle">Add Event</h2>
+        <form id="eventForm" method="POST">
+            <input type="hidden" id="idUzytkownika" name="idUzytkownika" value="<?php echo $user_id; ?>">
+            <input type="hidden" id="event_id" name="event_id">
+            <input type="hidden" id="action" name="action" value="add">
             <label for="date">Date:</label>
             <input type="date" id="date" name="date" required>
             <label for="name">Event Name:</label>
@@ -63,7 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label>
                 <input type="checkbox" id="participating" name="participating"> Participating
             </label>
-            <button type="submit" class="styled-button">Add Event</button>
+            <button type="submit" class="styled-button" id="saveEventButton">Save Event</button>
+            <button class="styled-button modify-button" id="modifyEventButton">Modify</button>
+            <button class="styled-button delete-button" id="deleteEventButton">Delete</button>
         </form>
     </div>
     <script src="terminarz.js"></script>
