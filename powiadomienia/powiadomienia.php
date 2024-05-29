@@ -61,7 +61,7 @@ session_start();
               <div class="card-body">
                 <h5 class="card-title">Data</h5>
                 <div class="more">
-                  <a href="#" class="btn btn-primary">Zobacz wiecej</a>
+                  <a href="#" class="btn btn-primary" id ="ModalBtn">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -71,7 +71,7 @@ session_start();
               <div class="card-body">
                 <h5 class="card-title">Data</h5>
                 <div class="more">
-                  <a href="#" class="btn btn-primary">Zobacz wiecej</a>
+                  <a href="#" class="btn btn-primary" id ="ModalBtn">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -81,7 +81,7 @@ session_start();
               <div class="card-body">
                 <h5 class="card-title">Data</h5>
                 <div class="more">
-                  <a href="#" class="btn btn-primary">Zobacz wiecej</a>
+                  <a href="#" class="btn btn-primary" id ="ModalBtn">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -93,7 +93,7 @@ session_start();
               <div class="card-body">
                 <h5 class="card-title">Data</h5>
                 <div class="more">
-                  <a href="#" class="btn btn-primary">Zobacz wiecej</a>
+                  <a href="#" class="btn btn-primary" id ="ModalBtn">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -103,7 +103,7 @@ session_start();
               <div class="card-body">
                 <h5 class="card-title">Data</h5>
                 <div class="more">
-                  <a href="#" class="btn btn-primary">Zobacz wiecej</a>
+                  <a href="#" class="btn btn-primary" id ="ModalBtn">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -113,7 +113,7 @@ session_start();
               <div class="card-body">
                 <h5 class="card-title">Data</h5>
                 <div class="more">
-                  <a href="#" class="btn btn-primary">Zobacz wiecej</a>
+                  <a href="#" class="btn btn-primary" id ="ModalBtn">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -121,5 +121,13 @@ session_start();
         </div>
       </div>
     </main>
+    <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Little Page Content</h2>
+      <p>This is the content of the little page.</p>
+    </div>
+  </div>
+  <script src="powiadomienia.js"></script>
   </body>
 </html>
