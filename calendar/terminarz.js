@@ -205,5 +205,26 @@ function deleteEvent(event_id) {
     });
 }
 
+function populateForm(event) {
+    const eventForm = document.querySelector('.event-form');
+    if (eventForm.style.display === 'block') { 
+        eventForm.style.display = 'none'; 
+    } else {
+        document.getElementById('formTitle').textContent = 'Modify Event';
+        document.getElementById('action').value = 'modify';
+        document.getElementById('event_id').value = event.id;
+        document.getElementById('date').value = event.date;
+        document.getElementById('name').value = event.name;
+        document.getElementById('description').value = event.description;
+        document.getElementById('location').value = event.location;
+        document.getElementById('note').value = event.note;
+        document.getElementById('participating').checked = event.participating ? true : false;
+        eventForm.style.display = 'block';
+        document.getElementById('saveEventButton').style.display = 'none';
+        document.getElementById('modifyEventButton').style.display = 'inline-block';
+        document.getElementById('deleteEventButton').style.display = 'none'; 
+    }
+}
+
 
 
