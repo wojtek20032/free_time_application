@@ -185,4 +185,25 @@ function modifyEvent() {
     });
 }
 
+function deleteEvent(event_id) {
+    let formData = new FormData();
+    formData.append('event_id', event_id);
+
+    fetch('delete_event.php', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.text())
+    .then(message => {
+        console.log('Server response:', message);
+        alert(message);
+        loadEvents();
+    })
+    .catch(error => {
+        console.error('Error deleting event:', error);
+        alert('Error deleting event: ' + error.message);
+    });
+}
+
+
 
