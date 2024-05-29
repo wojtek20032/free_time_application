@@ -61,7 +61,7 @@ session_start();
               <div class="card-body">
                 <h5 class="card-title">Data</h5>
                 <div class="more">
-                  <a href="#" class="btn btn-primary" id ="ModalBtn">Zobacz wiecej</a>
+                  <a href="#" class="ModalBtn btn btn-primary" id ="">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -71,7 +71,7 @@ session_start();
               <div class="card-body">
                 <h5 class="card-title">Data</h5>
                 <div class="more">
-                  <a href="#" class="btn btn-primary" id ="ModalBtn">Zobacz wiecej</a>
+                  <a href="#" class="ModalBtn btn btn-primary" id ="">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -81,7 +81,7 @@ session_start();
               <div class="card-body">
                 <h5 class="card-title">Data</h5>
                 <div class="more">
-                  <a href="#" class="btn btn-primary" id ="ModalBtn">Zobacz wiecej</a>
+                  <a href="#" class="ModalBtn btn btn-primary" id ="">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -93,7 +93,7 @@ session_start();
               <div class="card-body">
                 <h5 class="card-title">Data</h5>
                 <div class="more">
-                  <a href="#" class="btn btn-primary" id ="ModalBtn">Zobacz wiecej</a>
+                  <a href="#" class="ModalBtn btn btn-primary" id ="">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -103,7 +103,7 @@ session_start();
               <div class="card-body">
                 <h5 class="card-title">Data</h5>
                 <div class="more">
-                  <a href="#" class="btn btn-primary" id ="ModalBtn">Zobacz wiecej</a>
+                  <a href="#" class="ModalBtn btn btn-primary" id ="">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -113,7 +113,7 @@ session_start();
               <div class="card-body">
                 <h5 class="card-title">Data</h5>
                 <div class="more">
-                  <a href="#" class="btn btn-primary" id ="ModalBtn">Zobacz wiecej</a>
+                  <a href="#" class="ModalBtn btn btn-primary" id ="">Zobacz wiecej</a>
                 </div>
               </div>
             </div>

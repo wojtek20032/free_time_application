@@ -1,6 +1,6 @@
 var modal = document.getElementById("myModal");
 
-var btns = document.querySelectorAll("#ModalBtn");
+var btns = document.querySelectorAll(".ModalBtn");
 
 var span = document.getElementsByClassName("close")[0];
 
