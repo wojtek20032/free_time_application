@@ -1,20 +1,54 @@
 body {
-    background-color: aliceblue;
-  }
-  main{
-    height: 1108px;
-  }
-  img {
-    width: 80px;
-    height: 80px;
-  }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  #profile {
-    text-align: right;
-    left: auto !important;
-    right: 0 !important;
-  }
+  background-color: aliceblue;
+}
+main{
+  margin-top: 10%;
+  height: 1108px;
+}
+img {
+  width: 80px;
+  height: 80px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#profile {
+  text-align: right;
+  left: auto !important;
+  right: 0 !important;
+}
+
+#main-content{
+  width:80%;
+}
+
+.row{
+  display:flex;
+  margin-bottom: 5%;
+  justify-content: space-evenly;
+}
+
+#card-inner{
+  height: 250px;
+  padding:0 5%;
+}
+
+.card{
+  height:100%;
+  width: 100%;
+}
+
+.card-title{
+  display: flex;
+  justify-content: center;
+}
+
+.card .btn{
+  display:flex;
+  justify-content: center;
+  width: 150px;
+  margin-left: 28%;
+  margin-top: 40%;
+}
