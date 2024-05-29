@@ -28,6 +28,10 @@ class Event {
         return $stmt->execute();
     }
 
-    
+    public static function delete($conn, $event_id, $user_id) {
+        $stmt = $conn->prepare("DELETE FROM calendar_events WHERE id = ? AND idUzytkownika = ?");
+        $stmt->bind_param("ii", $event_id, $user_id);
+        return $stmt->execute();
+    }
 }
 ?>
