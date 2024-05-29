@@ -148,4 +148,41 @@ function addEvent() {
     });
 }
 
+function modifyEvent() {
+    let idUzytkownika = document.getElementById('idUzytkownika').value;
+    let eventId = document.getElementById('event_id').value;
+    let date = document.getElementById('date').value;
+    let name = document.getElementById('name').value;
+    let description = document.getElementById('description').value;
+    let location = document.getElementById('location').value;
+    let note = document.getElementById('note').value;
+    let participating = document.getElementById('participating').checked ? 1 : 0;
+
+    let formData = new FormData();
+    formData.append('idUzytkownika', idUzytkownika);
+    formData.append('event_id', eventId);
+    formData.append('date', date);
+    formData.append('name', name);
+    formData.append('description', description);
+    formData.append('location', location);
+    formData.append('note', note);
+    formData.append('participating', participating);
+
+    fetch('modify_event.php', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.text())
+    .then(message => {
+        console.log('Server response:', message);
+        loadEvents(); 
+        document.querySelector('.event-form').style.display = 'none';
+        formVisible = false;
+    })
+    .catch(error => {
+        console.error('Error modifying event:', error);
+        alert('Error modifying event: ' + error.message);
+    });
+}
+
 
