@@ -226,5 +226,15 @@ function populateForm(event) {
     }
 }
 
-
+function clearForm() {
+    document.getElementById('formTitle').textContent = '';
+    document.getElementById('action').value = '';
+    document.getElementById('event_id').value = '';
+    document.getElementById('date').value = '';
+    document.getElementById('name').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('location').value = '';
+    document.getElementById('note').value = '';
+    document.getElementById('participating').checked = false;
+}
 
