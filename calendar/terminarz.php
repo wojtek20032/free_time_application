@@ -17,6 +17,13 @@ $user_id = $_SESSION['user_id'];
 <body>
     <div class="calendar-container" style="display: none;">
         <div id="calendar"></div>
+        <label for="sortBy">Sort by:</label>
+        <select id="sortBy" style="display: none;">
+            <option value="date">Date</option>
+            <option value="name">Name</option>
+            <option value="participating">Participating</option>
+        </select>
+        <button id="sortEventsButton" class="styled-button" style="display: none;">Sort Events</button>
     </div>
 
     <div class="buttons-container">
@@ -52,3 +59,4 @@ $user_id = $_SESSION['user_id'];
     <script src="terminarz.js"></script>
 </body>
 </html>
+

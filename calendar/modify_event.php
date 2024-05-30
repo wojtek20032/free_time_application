@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = $_POST['description'];
     $location = $_POST['location'];
     $note = $_POST['note'];
-    $participating = isset($_POST['participating']) ? 1 : 0;
+    $participating = $_POST['participating'];
 
     $event = new Event($name, $description, $date, $location, $note, $participating);
 

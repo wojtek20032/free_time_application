@@ -5,12 +5,18 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('showEventsButton').addEventListener('click', function() {
         const calendarContainer = document.querySelector('.calendar-container');
         const eventForm = document.querySelector('.event-form');
+        const sortButton = document.getElementById('sortEventsButton');
+        const sortBy = document.getElementById('sortBy');
         if (eventsVisible) {
             calendarContainer.style.display = 'none';
+            sortButton.style.display = 'none';
+            sortBy.style.display = 'none';
             this.textContent = 'Show Events';
         } else {
             loadEvents();
             calendarContainer.style.display = 'block';
+            sortButton.style.display = 'inline-block';
+            sortBy.style.display = 'inline-block';
             this.textContent = 'Hide Events';
             eventForm.style.display = 'none';
             formVisible = false;
@@ -21,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('addEventButton').addEventListener('click', function() {
         const eventForm = document.querySelector('.event-form');
         const calendarContainer = document.querySelector('.calendar-container');
+        const sortButton = document.getElementById('sortEventsButton');
+        const sortBy = document.getElementById('sortBy');
         if (formVisible) {
             eventForm.style.display = 'none';
         } else {
@@ -32,10 +40,17 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('deleteEventButton').style.display = 'none';
             eventForm.style.display = 'block';
             calendarContainer.style.display = 'none';
+            sortButton.style.display = 'none';
+            sortBy.style.display = 'none';
             document.getElementById('showEventsButton').textContent = 'Show Events';
             eventsVisible = false;
         }
         formVisible = !formVisible;
+    });
+
+    document.getElementById('sortEventsButton').addEventListener('click', function() {
+        const sortByValue = document.getElementById('sortBy').value;
+        loadEvents(sortByValue);
     });
 
     document.getElementById('eventForm').addEventListener('submit', function(e) {
@@ -55,11 +70,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-function loadEvents() {
+function loadEvents(sortBy = null) {
     fetch('get_events.php')
         .then(response => response.json())
         .then(events => {
-            console.log('Loaded events:', events); 
+            console.log('Loaded events:', events);
+            if (sortBy) {
+                events.sort((a, b) => {
+                    if (sortBy === 'date') {
+                        return new Date(a.date) - new Date(b.date);
+                    } else if (sortBy === 'name') {
+                        return a.name.localeCompare(b.name);
+                    } else if (sortBy === 'participating') {
+                        return (a.participating === b.participating) ? 0 : a.participating ? -1 : 1;
+                    }
+                });
+            }
             let calendar = document.getElementById('calendar');
             calendar.innerHTML = '';
             if (events.length === 0) {
@@ -110,7 +136,6 @@ function loadEvents() {
             alert('Error loading events: ' + error.message);
         });
 }
-
 
 function addEvent() {
     let idUzytkownika = document.getElementById('idUzytkownika').value;
@@ -175,7 +200,7 @@ function modifyEvent() {
     .then(response => response.text())
     .then(message => {
         console.log('Server response:', message);
-        loadEvents(); 
+        loadEvents();
         document.querySelector('.event-form').style.display = 'none';
         formVisible = false;
     })
@@ -185,24 +210,26 @@ function modifyEvent() {
     });
 }
 
-function deleteEvent(event_id) {
-    let formData = new FormData();
-    formData.append('event_id', event_id);
+function deleteEvent(eventId) {
+    if (confirm('Are you sure you want to delete this event?')) {
+        let formData = new FormData();
+        formData.append('event_id', eventId);
 
-    fetch('delete_event.php', {
-        method: 'POST',
-        body: formData,
-    })
-    .then(response => response.text())
-    .then(message => {
-        console.log('Server response:', message);
-        alert(message);
-        loadEvents();
-    })
-    .catch(error => {
-        console.error('Error deleting event:', error);
-        alert('Error deleting event: ' + error.message);
-    });
+        fetch('delete_event.php', {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => response.text())
+        .then(message => {
+            console.log('Server response:', message);
+            alert(message);
+            loadEvents();
+        })
+        .catch(error => {
+            console.error('Error deleting event:', error);
+            alert('Error deleting event: ' + error.message);
+        });
+    }
 }
 
 function populateForm(event) {
@@ -237,4 +264,3 @@ function clearForm() {
     document.getElementById('note').value = '';
     document.getElementById('participating').checked = false;
 }
-
