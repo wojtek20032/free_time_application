@@ -85,3 +85,7 @@ img {
   text-decoration: none;
   cursor: pointer;
 }
+
+#status{
+  color:black;
+}

@@ -5,9 +5,6 @@ header {
   max-height: 90px;
   margin-bottom: 20px;
 }
-main{
-  height: 1108px;
-}
 img {
   width: 80px;
   height: 80px;
@@ -23,8 +20,43 @@ img {
   right: 0 !important;
 }
 
+main{
+  margin-top: 10%;
+}
+
 .search-bar {
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-content{
+  margin-top:5%;
+  width:80%;
+}
+
+.row{
+  display:flex;
+  margin-bottom: 5%;
+  justify-content: space-evenly;
+}
+
+#card-inner{
+  height: 250px;
+  padding:0 5%;
+}
+
+.card{
+  height:100%;
+  width: 100%;
+}
+
+.card-title{
+  display: flex;
+  justify-content: center;
+}
+
+.more{
   display: flex;
   justify-content: center;
   align-items: center;

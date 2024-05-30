@@ -49,12 +49,12 @@ $fetch = mysqli_query($conn,"SELECT * FROM `calendar_events`WHERE idUzytkownika 
             <div class="dropdown">
               <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false"
                 style="padding: 0%">
-                <img src="../icons/user.png" />
+                <img src="../icons/user.png"/>
               </button>
               <ul class="dropdown-menu dropdown-menu-right" id="profile">
                 <li><a class="dropdown-item" href="../profil/profil.php">Profil</a></li>
                 <li><a class="dropdown-item" href="../powiadomienia/powiadomienia.php">Powiadomienia</a></li>
-                <li><a class="dropdown-item" href="#">Wyloguj</a></li>
+                <li><a class="dropdown-item" href="../login-register/index.php">Wyloguj</a></li>
               </ul>
             </div>
           </div>
@@ -69,7 +69,7 @@ $fetch = mysqli_query($conn,"SELECT * FROM `calendar_events`WHERE idUzytkownika 
               <div class="card-body">
                 <h5 class="card-title"><?php if($result = mysqli_fetch_array($fetch)){echo $result['date'];} else {echo "Nieprzydzielona";} ?></h5>
                 <div class="more">
-                  <a href="#" class="ModalBtn btn btn-primary" id ="">Zobacz wiecej</a>
+                  <a href="#" class="ModalBtn btn btn-primary" id =<?php echo $result['date']?>">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -79,7 +79,7 @@ $fetch = mysqli_query($conn,"SELECT * FROM `calendar_events`WHERE idUzytkownika 
               <div class="card-body">
                 <h5 class="card-title"><?php if($result = mysqli_fetch_array($fetch)){echo $result['date'];} else {echo "Nieprzydzielona";} ?></h5>
                 <div class="more">
-                  <a href="#" class="ModalBtn btn btn-primary" id ="">Zobacz wiecej</a>
+                  <a href="#" class="ModalBtn btn btn-primary" id ="<?php echo $result['date']?>">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -89,7 +89,7 @@ $fetch = mysqli_query($conn,"SELECT * FROM `calendar_events`WHERE idUzytkownika 
               <div class="card-body">
                 <h5 class="card-title"><?php if($result = mysqli_fetch_array($fetch)){echo $result['date'];} else {echo "Nieprzydzielona";} ?></h5>
                 <div class="more">
-                  <a href="#" class="ModalBtn btn btn-primary" id ="">Zobacz wiecej</a>
+                  <a href="#" class="ModalBtn btn btn-primary" id ="<?php echo $result['date']?>">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -101,7 +101,7 @@ $fetch = mysqli_query($conn,"SELECT * FROM `calendar_events`WHERE idUzytkownika 
               <div class="card-body">
                 <h5 class="card-title"><?php if($result = mysqli_fetch_array($fetch)){echo $result['date'];} else {echo "Nieprzydzielona";} ?></h5>
                 <div class="more">
-                  <a href="#" class="ModalBtn btn btn-primary" id ="">Zobacz wiecej</a>
+                  <a href="#" class="ModalBtn btn btn-primary" id ="<?php echo $result['date']?>">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -111,7 +111,7 @@ $fetch = mysqli_query($conn,"SELECT * FROM `calendar_events`WHERE idUzytkownika 
               <div class="card-body">
                 <h5 class="card-title"><?php if($result = mysqli_fetch_array($fetch)){echo $result['date'];} else {echo "Nieprzydzielona";} ?></h5>
                 <div class="more">
-                  <a href="#" class="ModalBtn btn btn-primary" id ="">Zobacz wiecej</a>
+                  <a href="#" class="ModalBtn btn btn-primary" id ="<?php echo $result['date']?>">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -121,7 +121,7 @@ $fetch = mysqli_query($conn,"SELECT * FROM `calendar_events`WHERE idUzytkownika 
               <div class="card-body">
                 <h5 class="card-title"><?php if($result = mysqli_fetch_array($fetch)){echo $result['date'];} else {echo "Nieprzydzielona";} ?></h5>
                 <div class="more">
-                  <a href="#" class="ModalBtn btn btn-primary" id ="">Zobacz wiecej</a>
+                  <a href="#" class="ModalBtn btn btn-primary" id ="<?php echo $result['date']?>">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -132,8 +132,8 @@ $fetch = mysqli_query($conn,"SELECT * FROM `calendar_events`WHERE idUzytkownika 
     <div id="myModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <h2>Little Page Content</h2>
-      <p>This is the content of the little page.</p>
+      <h2 id="change_text_on_click">Little Page Content</h2>
+      <p id="change_of_desc">This is the content of the little page. <h3 id="status"></h3></p>
     </div>
   </div>
   <script src="powiadomienia.js"></script>
