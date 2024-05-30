@@ -4,9 +4,17 @@
         header('Location: ../login-register/index.php');
         exit();
     }
-    
-    $user_id = $_SESSION['user_id'];
+    if(isset($_POST['sign_out'])){
+      unset($_POST['sign_out']);
+      session_unset();
+      session_destroy();
+      header('Location: ../login-register/index.php');
+      exit();
+    }
     require("../db.php");
+    $id = $_SESSION['user_id'];
+    $fetch = mysqli_query($conn,"SELECT * FROM calendar_events WHERE idUzytkownika = '$id' ORDER BY calendar_events.date ASC ");
+    
 ?>
 
 <!DOCTYPE html>
@@ -91,8 +99,8 @@
                 id="profile"
               >
                 <li><a class="dropdown-item" href="../profil/profil.php">Profil</a></li>
-                <li><a class="dropdown-item" href="#">Powiadomienia</a></li>
-                <li><a class="dropdown-item" href="#">Wyloguj</a></li>
+                <li><a class="dropdown-item" href="../powiadomienia/powiadomienia.php">Powiadomienia</a></li>
+                <li><a class="dropdown-item" method="POST" name="sign_out" type="submit">Wyloguj</a></li>
               </ul>
             </div>
           </div>
@@ -116,6 +124,40 @@
             </form>
           </div>
         </nav>
+      </div>
+      <div class="container-fluid" id="main-content">
+        <div class="row">
+          <div class="col-sm-4 mb-3 mb-sm-0" id="card-inner">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><?php if($result = mysqli_fetch_array($fetch)){echo $result['date'];} else {echo "Nieprzydzielona";} ?></h5>
+                <div class="more">
+                  <a class="ModalBtn btn btn-primary" href="../powiadomienia/powiadomienia.php">Zobacz wiecej</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4" id="card-inner">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><?php if($result = mysqli_fetch_array($fetch)){echo $result['date'];} else {echo "Nieprzydzielona";} ?></h5>
+                <div class="more">
+                  <a class="ModalBtn btn btn-primary" href="../powiadomienia/powiadomienia.php">Zobacz wiecej</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4 mb-3 mb-sm-0" id="card-inner">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><?php if($result = mysqli_fetch_array($fetch)){echo $result['date'];} else {echo "Nieprzydzielona";} ?></h5>
+                <div class="more">
+                  <a class="ModalBtn btn btn-primary" href="../powiadomienia/powiadomienia.php">Zobacz wiecej</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <footer>

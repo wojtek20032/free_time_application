@@ -1,20 +1,91 @@
 body {
-    background-color: aliceblue;
-  }
-  main{
-    height: 1108px;
-  }
-  img {
-    width: 80px;
-    height: 80px;
-  }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  #profile {
-    text-align: right;
-    left: auto !important;
-    right: 0 !important;
-  }
+  background-color: aliceblue;
+}
+main{
+  margin-top: 10%;
+  height: 1108px;
+}
+img {
+  width: 80px;
+  height: 80px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#profile {
+  text-align: right;
+  left: auto !important;
+  right: 0 !important;
+}
+
+#main-content{
+  width:80%;
+}
+
+.row{
+  display:flex;
+  margin-bottom: 5%;
+  justify-content: space-evenly;
+}
+
+#card-inner{
+  height: 250px;
+  padding:0 5%;
+}
+
+.card{
+  height:100%;
+  width: 100%;
+}
+
+.card-title{
+  display: flex;
+  justify-content: center;
+}
+
+.more{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#status{
+  color:black;
+}
