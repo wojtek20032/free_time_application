@@ -13,7 +13,7 @@
     }
     require("../db.php");
     $id = $_SESSION['user_id'];
-    $fetch = mysqli_query($conn,"SELECT * FROM calendar_events WHERE idUzytkownika = '$id' ORDER BY calendar_events.date DESC ");
+    $fetch = mysqli_query($conn,"SELECT * FROM calendar_events WHERE idUzytkownika = '$id' ORDER BY calendar_events.date ASC ");
     
 ?>
 
