@@ -4,6 +4,13 @@ if(!isset($_SESSION['user_id'])){
   header('Location: ../login-register/index.php');
   exit();
 }
+if(isset($_POST['sign_out'])){
+  unset($_POST['sign_out']);
+  session_unset();
+  session_destroy();
+  header('Location: ../login-register/index.php');
+  exit();
+}
 ?>
 <?php require ("../db.php"); 
 
@@ -54,7 +61,7 @@ $fetch = mysqli_query($conn,"SELECT * FROM `calendar_events`WHERE idUzytkownika 
               <ul class="dropdown-menu dropdown-menu-right" id="profile">
                 <li><a class="dropdown-item" href="../profil/profil.php">Profil</a></li>
                 <li><a class="dropdown-item" href="../powiadomienia/powiadomienia.php">Powiadomienia</a></li>
-                <li><a class="dropdown-item" href="../login-register/index.php">Wyloguj</a></li>
+                <li><a class="dropdown-item" method="POST" name="sign_out" type="submit">Wyloguj</a></li>
               </ul>
             </div>
           </div>
