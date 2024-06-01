@@ -24,6 +24,12 @@ main{
   margin-top: 10%;
 }
 
+.greeting{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .search-bar {
   display: flex;
   justify-content: center;
