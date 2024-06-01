@@ -127,7 +127,7 @@
       </div>
       <div class="container-fluid" id="main-content">
         <div class="row">
-          <div class="col-sm-4 mb-3 mb-sm-0" id="card-inner">
+          <div class="col-12 col-xxl-4 mb-3" id="card-inner">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title"><?php if($result = mysqli_fetch_array($fetch)){echo $result['date'];} else {echo "Nieprzydzielona";} ?></h5>
@@ -137,7 +137,7 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-4" id="card-inner">
+          <div class="col-12 col-xxl-4 mb-3" id="card-inner">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title"><?php if($result = mysqli_fetch_array($fetch)){echo $result['date'];} else {echo "Nieprzydzielona";} ?></h5>
@@ -147,7 +147,7 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-4 mb-3 mb-sm-0" id="card-inner">
+          <div class="col-12 col-xxl-4 mb-3" id="card-inner">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title"><?php if($result = mysqli_fetch_array($fetch)){echo $result['date'];} else {echo "Nieprzydzielona";} ?></h5>
