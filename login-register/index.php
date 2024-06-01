@@ -49,6 +49,7 @@
                         $result = $user_to_verify->login($mail, $pass, $conn);
                         if($result === true){
                             $_SESSION['user_id'] = $user_to_verify->getId(); 
+                            $_SESSION['username'] = $user_to_verify->getName();
                             header('location: ../menu/menu.php');
                             exit();
                         } else {

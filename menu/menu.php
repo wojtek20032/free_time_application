@@ -106,6 +106,14 @@ $fetch = mysqli_query($conn, "SELECT * FROM calendar_events WHERE idUzytkownika 
     <div class="search-bar">
       <nav class="navbar">
         <div class="container-fluid">
+          <?php
+          if(isset($_SESSION['username'])){
+           
+          ?>
+          <h1><?php  printf("Witaj %s\n",$_SESSION['username']);
+            unset($_SESSION['username']);
+          }
+          ?></h1>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             <button class="btn btn-outline-success" type="submit">
