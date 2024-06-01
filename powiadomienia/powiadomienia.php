@@ -31,6 +31,11 @@ $fetch = mysqli_query($conn, "SELECT * FROM `calendar_events`WHERE idUzytkownika
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
   <title>Powiadomienia</title>
+  <script>function logout() {
+      event.preventDefault();
+      document.getElementById("logout-form").submit();
+      window.location.href = "../login-register/index.php";
+    }</script>
 </head>
 
 <body>
@@ -61,7 +66,11 @@ $fetch = mysqli_query($conn, "SELECT * FROM `calendar_events`WHERE idUzytkownika
             <ul class="dropdown-menu dropdown-menu-right" id="profile">
               <li><a class="dropdown-item" href="../profil/profil.php">Profil</a></li>
               <li><a class="dropdown-item" href="../powiadomienia/powiadomienia.php">Powiadomienia</a></li>
-              <li><a class="dropdown-item" method="POST" name="sign_out" type="submit">Wyloguj</a></li>
+              <li>
+                <form id="logout-form" method="POST" action="your-signout-url">
+                  <button class="dropdown-item" name="sign_out" type="submit" onclick="logout()">Wyloguj</button>
+                </form>
+              </li>
             </ul>
           </div>
         </div>
@@ -175,8 +184,9 @@ $fetch = mysqli_query($conn, "SELECT * FROM `calendar_events`WHERE idUzytkownika
       <span class="close">&times;</span>
       <h2 id="change_text_on_click">Little Page Content</h2>
       <h3 id="note_to_change"></h3>
-      <p><h3 id="change_of_desc">This is the content of the little page.</h3>
-      
+      <p>
+      <h3 id="change_of_desc">This is the content of the little page.</h3>
+
       <h4 id="status"></h4>
       </p>
     </div>
