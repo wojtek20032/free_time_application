@@ -67,7 +67,7 @@ $fetch = mysqli_query($conn, "SELECT * FROM `calendar_events`WHERE idUzytkownika
               <li><a class="dropdown-item" href="../profil/profil.php">Profil</a></li>
               <li><a class="dropdown-item" href="../powiadomienia/powiadomienia.php">Powiadomienia</a></li>
               <li>
-                <form id="logout-form" method="POST" action="your-signout-url">
+                <form id="logout-form" method="POST">
                   <button class="dropdown-item" name="sign_out" type="submit" onclick="logout()">Wyloguj</button>
                 </form>
               </li>
