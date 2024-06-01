@@ -174,8 +174,10 @@ $fetch = mysqli_query($conn, "SELECT * FROM `calendar_events`WHERE idUzytkownika
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2 id="change_text_on_click">Little Page Content</h2>
-      <p id="change_of_desc">This is the content of the little page.
-      <h3 id="status"></h3>
+      <h3 id="note_to_change"></h3>
+      <p><h3 id="change_of_desc">This is the content of the little page.</h3>
+      
+      <h4 id="status"></h4>
       </p>
     </div>
   </div>
