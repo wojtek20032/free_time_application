@@ -63,6 +63,7 @@ $fetch = mysqli_query($conn, "SELECT * FROM calendar_events WHERE idUzytkownika 
 </head>
 
 <body>
+  <div class="container">
   <header>
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid" style="display: block">
@@ -112,6 +113,9 @@ $fetch = mysqli_query($conn, "SELECT * FROM calendar_events WHERE idUzytkownika 
         unset($_SESSION['username']);
       }
       ?></h1>
+    </div>
+    <div class="desc">
+      <h1>Znajdz sobie cos do zrobienia w czasie wolnym !</h1>
     </div>
     <div class="search-bar">
       <nav class="navbar">
@@ -179,10 +183,13 @@ $fetch = mysqli_query($conn, "SELECT * FROM calendar_events WHERE idUzytkownika 
     </div>
   </main>
   <footer>
+    <div class="container-fluid">
     <button onclick="openGoogleMaps()">
       <a href="#"><img src="../icons/placeholder.png" /></a>
     </button>
+    </div>
   </footer>
+  </div>
 </body>
 
 </html>
