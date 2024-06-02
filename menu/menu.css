@@ -62,8 +62,13 @@ main{
   justify-content: center;
 }
 
+#data{
+  height:50px;
+}
+
 .more{
   display: flex;
   justify-content: center;
   align-items: center;
+  height:100%;
 }

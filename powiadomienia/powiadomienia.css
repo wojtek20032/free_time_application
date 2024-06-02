@@ -42,6 +42,15 @@ img {
 .card-title{
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+#data{
+  height:50px;
+}
+
+#event{
+  height:100px;
 }
 
 .more{
