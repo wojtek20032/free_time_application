@@ -15,7 +15,6 @@ if (isset($_POST['sign_out'])) {
 <?php require ("../db.php");
 
 $id = $_SESSION['user_id'];
-$fetch = mysqli_query($conn, "SELECT * FROM `calendar_events`WHERE idUzytkownika = '$id' ORDER BY `calendar_events`.`date` ASC ");
 ?>
 
 <!DOCTYPE html>
@@ -84,16 +83,10 @@ $fetch = mysqli_query($conn, "SELECT * FROM `calendar_events`WHERE idUzytkownika
           <div class="card">
             <div class="card-body">
               <h5 class="card-title" id="data">
-                <?php if ($result = mysqli_fetch_array($fetch)) {
-                  printf("%s", $result['date']);
-                  ?>
                 </h5>
-                <h5 class="card-title" id="event"><?php printf("%s", $result['description']);
-                } else {
-                  echo "Nieprzydzielona";
-                } ?></h5>
+                <h5 class="card-title" id="event"></h5>
               <div class="more">
-                <a href="#" class="ModalBtn btn btn-primary" id="<?php echo $result['date'] ?>">Zobacz wiecej</a>
+                <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
               </div>
             </div>
           </div>
@@ -102,16 +95,10 @@ $fetch = mysqli_query($conn, "SELECT * FROM `calendar_events`WHERE idUzytkownika
           <div class="card">
             <div class="card-body">
               <h5 class="card-title" id="data">
-                <?php if ($result = mysqli_fetch_array($fetch)) {
-                  printf("%s", $result['date']);
-                  ?>
                 </h5>
-                <h5 class="card-title" id="event"><?php printf("%s", $result['description']);
-                } else {
-                  echo "Nieprzydzielona";
-                } ?></h5>
+                <h5 class="card-title" id="event"></h5>
               <div class="more">
-                <a href="#" class="ModalBtn btn btn-primary" id="<?php echo $result['date'] ?>">Zobacz wiecej</a>
+                <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
               </div>
             </div>
           </div>
@@ -119,17 +106,11 @@ $fetch = mysqli_query($conn, "SELECT * FROM `calendar_events`WHERE idUzytkownika
         <div class="col-12 col-xxl-4 mb-5" id="card-inner">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title" id="data">
-                <?php if ($result = mysqli_fetch_array($fetch)) {
-                  printf("%s", $result['date']);
-                  ?>
+            <h5 class="card-title" id="data">
                 </h5>
-                <h5 class="card-title" id="event"><?php printf("%s", $result['description']);
-                } else {
-                  echo "Nieprzydzielona";
-                } ?></h5>
+                <h5 class="card-title" id="event"></h5>
               <div class="more">
-                <a href="#" class="ModalBtn btn btn-primary" id="<?php echo $result['date'] ?>">Zobacz wiecej</a>
+                <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
               </div>
             </div>
           </div>
@@ -137,17 +118,11 @@ $fetch = mysqli_query($conn, "SELECT * FROM `calendar_events`WHERE idUzytkownika
         <div class="col-12 col-xxl-4 mb-5" id="card-inner">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title" id="data">
-                <?php if ($result = mysqli_fetch_array($fetch)) {
-                  printf("%s", $result['date']);
-                  ?>
+            <h5 class="card-title" id="data">
                 </h5>
-                <h5 class="card-title" id="event"><?php printf("%s", $result['description']);
-                } else {
-                  echo "Nieprzydzielona";
-                } ?></h5>
+                <h5 class="card-title" id="event"></h5>
               <div class="more">
-                <a href="#" class="ModalBtn btn btn-primary" id="<?php echo $result['date'] ?>">Zobacz wiecej</a>
+                <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
               </div>
             </div>
           </div>
@@ -155,17 +130,11 @@ $fetch = mysqli_query($conn, "SELECT * FROM `calendar_events`WHERE idUzytkownika
         <div class="col-12 col-xxl-4 mb-5" id="card-inner">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title" id="data">
-                <?php if ($result = mysqli_fetch_array($fetch)) {
-                  printf("%s", $result['date']);
-                  ?>
+            <h5 class="card-title" id="data">
                 </h5>
-                <h5 class="card-title" id="event"><?php printf("%s", $result['description']);
-                } else {
-                  echo "Nieprzydzielona";
-                } ?></h5>
+                <h5 class="card-title" id="event"></h5>
               <div class="more">
-                <a href="#" class="ModalBtn btn btn-primary" id="<?php echo $result['date'] ?>">Zobacz wiecej</a>
+                <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
               </div>
             </div>
           </div>
@@ -173,17 +142,11 @@ $fetch = mysqli_query($conn, "SELECT * FROM `calendar_events`WHERE idUzytkownika
         <div class="col-12 col-xxl-4 mb-5" id="card-inner">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title" id="data">
-                <?php if ($result = mysqli_fetch_array($fetch)) {
-                  printf("%s", $result['date']);
-                  ?>
+            <h5 class="card-title" id="data">
                 </h5>
-                <h5 class="card-title" id="event"><?php printf("%s", $result['description']);
-                } else {
-                  echo "Nieprzydzielona";
-                } ?></h5>
+                <h5 class="card-title" id="event"></h5>
               <div class="more">
-                <a href="#" class="ModalBtn btn btn-primary" id="<?php echo $result['date'] ?>">Zobacz wiecej</a>
+                <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
               </div>
             </div>
           </div>
