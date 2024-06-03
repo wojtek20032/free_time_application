@@ -13,8 +13,6 @@ if (isset($_POST['sign_out'])) {
 }
 require ("../db.php");
 $id = $_SESSION['user_id'];
-$fetch = mysqli_query($conn, "SELECT * FROM calendar_events WHERE idUzytkownika = '$id' ORDER BY calendar_events.date ASC ");
-
 ?>
 
 <!DOCTYPE html>
@@ -135,11 +133,6 @@ $fetch = mysqli_query($conn, "SELECT * FROM calendar_events WHERE idUzytkownika 
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">
-                <?php if ($result = mysqli_fetch_array($fetch)) {
-                  echo $result['date'];
-                } else {
-                  echo "Nieprzydzielona";
-                } ?>
               </h5>
               <div class="more">
                 <a class="ModalBtn btn btn-primary" href="../powiadomienia/powiadomienia.php">Zobacz wiecej</a>
@@ -151,11 +144,6 @@ $fetch = mysqli_query($conn, "SELECT * FROM calendar_events WHERE idUzytkownika 
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">
-                <?php if ($result = mysqli_fetch_array($fetch)) {
-                  echo $result['date'];
-                } else {
-                  echo "Nieprzydzielona";
-                } ?>
               </h5>
               <div class="more">
                 <a class="ModalBtn btn btn-primary" href="../powiadomienia/powiadomienia.php">Zobacz wiecej</a>
@@ -167,11 +155,6 @@ $fetch = mysqli_query($conn, "SELECT * FROM calendar_events WHERE idUzytkownika 
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">
-                <?php if ($result = mysqli_fetch_array($fetch)) {
-                  echo $result['date'];
-                } else {
-                  echo "Nieprzydzielona";
-                } ?>
               </h5>
               <div class="more">
                 <a class="ModalBtn btn btn-primary" href="../powiadomienia/powiadomienia.php">Zobacz wiecej</a>
@@ -190,6 +173,7 @@ $fetch = mysqli_query($conn, "SELECT * FROM calendar_events WHERE idUzytkownika 
     </div>
   </footer>
   </div>
+  <script src="menu.js"></script>
 </body>
 
 </html>
