@@ -19,6 +19,14 @@ img {
   right: 0 !important;
 }
 
+h1{
+  font-family:'Varela Round',sans-serif;
+}
+
+h2,h3,h4,h5,a,button, input {
+  font-family: 'Anek Kannada', sans-serif !important;
+}
+
 #main-content{
   width:80%;
 }

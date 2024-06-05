@@ -35,6 +35,10 @@ $id = $_SESSION['user_id'];
       document.getElementById("logout-form").submit();
       window.location.href = "../login-register/index.php";
     }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@100..800&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -83,8 +87,8 @@ $id = $_SESSION['user_id'];
           <div class="card">
             <div class="card-body">
               <h5 class="card-title" id="data">
-                </h5>
-                <h5 class="card-title" id="event"></h5>
+              </h5>
+              <h5 class="card-title" id="event"></h5>
               <div class="more">
                 <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
               </div>
@@ -95,8 +99,8 @@ $id = $_SESSION['user_id'];
           <div class="card">
             <div class="card-body">
               <h5 class="card-title" id="data">
-                </h5>
-                <h5 class="card-title" id="event"></h5>
+              </h5>
+              <h5 class="card-title" id="event"></h5>
               <div class="more">
                 <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
               </div>
@@ -106,9 +110,9 @@ $id = $_SESSION['user_id'];
         <div class="col-12 col-xxl-4 mb-5" id="card-inner">
           <div class="card">
             <div class="card-body">
-            <h5 class="card-title" id="data">
-                </h5>
-                <h5 class="card-title" id="event"></h5>
+              <h5 class="card-title" id="data">
+              </h5>
+              <h5 class="card-title" id="event"></h5>
               <div class="more">
                 <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
               </div>
@@ -118,9 +122,9 @@ $id = $_SESSION['user_id'];
         <div class="col-12 col-xxl-4 mb-5" id="card-inner">
           <div class="card">
             <div class="card-body">
-            <h5 class="card-title" id="data">
-                </h5>
-                <h5 class="card-title" id="event"></h5>
+              <h5 class="card-title" id="data">
+              </h5>
+              <h5 class="card-title" id="event"></h5>
               <div class="more">
                 <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
               </div>
@@ -130,9 +134,9 @@ $id = $_SESSION['user_id'];
         <div class="col-12 col-xxl-4 mb-5" id="card-inner">
           <div class="card">
             <div class="card-body">
-            <h5 class="card-title" id="data">
-                </h5>
-                <h5 class="card-title" id="event"></h5>
+              <h5 class="card-title" id="data">
+              </h5>
+              <h5 class="card-title" id="event"></h5>
               <div class="more">
                 <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
               </div>
@@ -142,9 +146,9 @@ $id = $_SESSION['user_id'];
         <div class="col-12 col-xxl-4 mb-5" id="card-inner">
           <div class="card">
             <div class="card-body">
-            <h5 class="card-title" id="data">
-                </h5>
-                <h5 class="card-title" id="event"></h5>
+              <h5 class="card-title" id="data">
+              </h5>
+              <h5 class="card-title" id="event"></h5>
               <div class="more">
                 <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
               </div>

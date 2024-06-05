@@ -9,6 +9,14 @@ body {
   flex-direction: column;
 }
 
+h1{
+  font-family:'Varela Round',sans-serif;
+}
+
+h5,a,button, input {
+  font-family: 'Anek Kannada', sans-serif !important;
+}
+
 .container {
   display: flex;
   flex-direction: column;
