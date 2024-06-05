@@ -71,7 +71,7 @@ $id = $_SESSION['user_id'];
         <div class="container-fluid" style="display: block">
           <div class="header">
             <div class="dropdown">
-              <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+              <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
                 style="padding: 0%">
                 <img src="../icons/menu.png" />
               </button>
@@ -87,7 +87,7 @@ $id = $_SESSION['user_id'];
               <h1>Kampa</h1>
             </a>
             <div class="dropdown">
-              <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+              <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
                 style="padding: 0%">
                 <img src="../icons/user.png" />
               </button>
@@ -139,7 +139,7 @@ $id = $_SESSION['user_id'];
                 <h5 class="card-title">
                 </h5>
                 <div class="more">
-                  <a class="ModalBtn btn btn-primary" href="../powiadomienia/powiadomienia.php">Zobacz wiecej</a>
+                  <a class="ModalBtn btn btn-success" href="../powiadomienia/powiadomienia.php">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -150,7 +150,7 @@ $id = $_SESSION['user_id'];
                 <h5 class="card-title">
                 </h5>
                 <div class="more">
-                  <a class="ModalBtn btn btn-primary" href="../powiadomienia/powiadomienia.php">Zobacz wiecej</a>
+                  <a class="ModalBtn btn btn-success" href="../powiadomienia/powiadomienia.php">Zobacz wiecej</a>
                 </div>
               </div>
             </div>
@@ -161,7 +161,7 @@ $id = $_SESSION['user_id'];
                 <h5 class="card-title">
                 </h5>
                 <div class="more">
-                  <a class="ModalBtn btn btn-primary" href="../powiadomienia/powiadomienia.php">Zobacz wiecej</a>
+                  <a class="ModalBtn btn btn-success" href="../powiadomienia/powiadomienia.php">Zobacz wiecej</a>
                 </div>
               </div>
             </div>

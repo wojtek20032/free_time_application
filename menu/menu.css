@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  background-color: aliceblue;
+  background-color: #FCAE1E;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -11,10 +11,23 @@ body {
 
 h1{
   font-family:'Varela Round',sans-serif;
+  color:#7A3803;
 }
 
 h5,a,button, input {
   font-family: 'Anek Kannada', sans-serif !important;
+}
+
+.dropdown-item {
+  color:#FCAE1E;
+}
+
+.dropdown, ul{
+  background-color: #7A3803 !important;
+}
+
+.dropdown{
+  border-radius: 10%;
 }
 
 .container {
@@ -29,16 +42,20 @@ h5,a,button, input {
 header {
   max-height: 90px;
   margin-bottom: 20px;
+  background-color: #FCAE1E;
 }
+
 img {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
 }
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 #profile {
   text-align: right;
   left: auto !important;
@@ -89,11 +106,13 @@ main{
 .card{
   height:100%;
   width: 100%;
+  background-color: #7A3803;
 }
 
 .card-title{
   display: flex;
   justify-content: center;
+  color:#FCAE1E;
 }
 
 #data{
@@ -109,4 +128,11 @@ main{
 
 footer{
   margin-top:auto;
+  background-color: #FCAE1E;
+  margin-bottom:10px;
+}
+
+footer button{
+  background-color:#7A3803;
+  border-radius:10%;
 }
