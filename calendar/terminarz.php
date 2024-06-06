@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['user_id'])){
+if (!isset($_SESSION['user_id'])) {
     header('Location: ../login-register/index.php');
     exit();
 }
@@ -8,13 +8,18 @@ $user_id = $_SESSION['user_id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Calendar</title>
     <link rel="stylesheet" href="terminarz.css">
 </head>
+
 <body>
+
+    <h1 id="eventy-title">Eventy</h1>
+
     <div class="calendar-container" style="display: none;">
         <div id="calendar"></div>
         <label for="sortBy">Sort by:</label>
@@ -58,5 +63,5 @@ $user_id = $_SESSION['user_id'];
     </div>
     <script src="terminarz.js"></script>
 </body>
-</html>
 
+</html>
