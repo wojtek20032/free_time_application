@@ -1,6 +1,6 @@
 var modal = document.getElementById("myModal");
 
-var btns = document.querySelectorAll(".ModalBtn");
+var btns;
 
 var span = document.getElementsByClassName("close")[0];
 
@@ -32,33 +32,44 @@ const getData = async () => {
       }
     }
   } while(end!=0);
-  let container_to_append = document.getElementsByClassName("row");
-  let main_container_for_reminder = document.createElement("div");
-  main_container_for_reminder.classList.add("col-12 col-xxl-4 mb-5");
-  main_container_for_reminder.id = "card-inner";
-  let second_container_for_reminder = document.createElement("div");
-  second_container_for_reminder.classList.add("card");
-  let third_container_for_reminder = document.createElement("div");
-  third_container_for_reminder.classList.add("card-body");
-  let h5_first = document.createElement("h5");
-  h5_first.classList.add("card-title");
-  h5_first.id = "data";
-  let h5_second = document.createElement("h5");
-  h5_second.classList.add("card-title");
-  h5_second.id = "event";
-  let fourth_container_for_reminder = document.createElement("div");
-  fourth_container_for_reminder.classList.add("more");
-  let link_first = document.createElement("a");
-  link_first.classList.add("ModalBtn btn btn-primary");
-  link_first.innerHTML = "Zobacz wiecej";
-  fourth_container_for_reminder.appendChild(link_first);
-  third_container_for_reminder.appendChild(h5_first);
-  third_container_for_reminder.appendChild(h5_second);
-  third_container_for_reminder.container_to_append(fourth_container_for_reminder);
-  second_container_for_reminder.appendChild(third_container_for_reminder);
-  main_container_for_reminder.appendChild(second_container_for_reminder);
-  container_to_append.appendChild(main_container_for_reminder);
-});
+  for(let i =0; i < dataGlobal.length;i++){
+    let entry_date = new String(dataGlobal[i].date);
+    let data = new Date();
+    let data_to_check = new Date(entry_date + " 23:59:59 GMT+2");
+    let date_to_verify = (data_to_check.getTime() - data.getTime())/(1000 * 60 * 60 * 24);
+    if(date_to_verify<=3 && dataGlobal[i].participating ===1){
+    let container_to_append = document.getElementsByClassName("row");
+    let main_container_for_reminder = document.createElement("div");
+    main_container_for_reminder.classList.add("col-12", "col-xxl-4", "mb-5");
+    main_container_for_reminder.id = "card-inner";
+    let second_container_for_reminder = document.createElement("div");
+    second_container_for_reminder.classList.add("card");
+    let third_container_for_reminder = document.createElement("div");
+    third_container_for_reminder.classList.add("card-body");
+    let h5_first = document.createElement("h5");
+    h5_first.classList.add("card-title");
+    h5_first.id = "data";
+    let h5_second = document.createElement("h5");
+    h5_second.classList.add("card-title");
+    h5_second.id = "event";
+    let fourth_container_for_reminder = document.createElement("div");
+    fourth_container_for_reminder.classList.add("more");
+    let link_first = document.createElement("a");
+    link_first.classList.add("ModalBtn", "btn", "btn-primary");
+    link_first.innerHTML = "Zobacz wiecej";
+    fourth_container_for_reminder.appendChild(link_first);
+    third_container_for_reminder.appendChild(h5_first);
+    third_container_for_reminder.appendChild(h5_second);
+    third_container_for_reminder.appendChild(fourth_container_for_reminder);
+    second_container_for_reminder.appendChild(third_container_for_reminder);
+    main_container_for_reminder.appendChild(second_container_for_reminder);
+    container_to_append[0].appendChild(main_container_for_reminder);
+    }
+  }
+  btns = document.querySelectorAll(".ModalBtn");
+  data_display = document.querySelectorAll("#data");
+  event_display = document.querySelectorAll("#event");
+})();
 
 (async () => {
   await getData();
@@ -80,7 +91,8 @@ const getData = async () => {
   });
   for(let i =0; i < dataGlobal.length;i++){
     let data = new String(dataGlobal[i].date);
-    btns[i].setAttribute("id",data);
+    console.log(btns)
+    btns[i].id = data;
     data_display[i].innerHTML = data;
     event_display[i].innerHTML = dataGlobal[i].description;
   }
@@ -92,7 +104,7 @@ const getData = async () => {
         let entry_date = new String(entry.date);
         if(entry_date.localeCompare(entry_to_display)===0){
           let data = new Date();
-          let data_to_check = new Date(entry_date + " 00:00:00 GMT+2");
+          let data_to_check = new Date(entry_date + " 23:59:59 GMT+2");
             let date_to_verify = (data_to_check.getTime() - data.getTime())/(1000 * 60 * 60 * 24);
             btn.innerText =  (date_to_verify>=7 ? "Opcjonalne" : ((date_to_verify >3 &&date_to_verify <7) ? "Wazne" : (date_to_verify <=3 ? "Pilne":"none")));
             btn.style.backgroundColor =  (date_to_verify >=7 ? "green" : ((date_to_verify >3 &&date_to_verify <7) ? "#FC7A1E" : (date_to_verify <=3 ? "red":"white")));
@@ -113,7 +125,7 @@ const getData = async () => {
           if(entry_date.localeCompare(entry_to_display)===0){
             text_to_change.innerText = entry.description;
             let data = new Date();
-            let data_to_check = new Date(entry_date + " 00:00:00 GMT+2");
+            let data_to_check = new Date(entry_date + " 23:59:59 GMT+2");
             let date_to_verify = (data_to_check.getTime() - data.getTime())/(1000 * 60 * 60 * 24);
                 text_to_change1.innerText = "Status: ";
                 temp.innerText =  (date_to_verify >=7 ? "Opcjonalne" : ((date_to_verify >3 &&date_to_verify <7) ? "Wazne" : (date_to_verify <=3 ? "Pilne":"none")));
