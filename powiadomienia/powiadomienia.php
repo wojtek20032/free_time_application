@@ -40,7 +40,6 @@ $id = $_SESSION['user_id'];
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@100..800&display=swap" rel="stylesheet">
 </head>
-
 <body>
   <header>
     <nav class="navbar navbar-expand-lg">
@@ -83,78 +82,6 @@ $id = $_SESSION['user_id'];
   <main>
     <div class="container-fluid" id="main-content">
       <div class="row">
-        <div class="col-12 col-xxl-4 mb-5" id="card-inner">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title" id="data">
-              </h5>
-              <h5 class="card-title" id="event"></h5>
-              <div class="more">
-                <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-xxl-4 mb-5" id="card-inner">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title" id="data">
-              </h5>
-              <h5 class="card-title" id="event"></h5>
-              <div class="more">
-                <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-xxl-4 mb-5" id="card-inner">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title" id="data">
-              </h5>
-              <h5 class="card-title" id="event"></h5>
-              <div class="more">
-                <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-xxl-4 mb-5" id="card-inner">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title" id="data">
-              </h5>
-              <h5 class="card-title" id="event"></h5>
-              <div class="more">
-                <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-xxl-4 mb-5" id="card-inner">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title" id="data">
-              </h5>
-              <h5 class="card-title" id="event"></h5>
-              <div class="more">
-                <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-xxl-4 mb-5" id="card-inner">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title" id="data">
-              </h5>
-              <h5 class="card-title" id="event"></h5>
-              <div class="more">
-                <a href="#" class="ModalBtn btn btn-primary" id="">Zobacz wiecej</a>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </main>
@@ -165,7 +92,6 @@ $id = $_SESSION['user_id'];
       <h3 id="note_to_change"></h3>
       <p>
       <h3 id="change_of_desc">This is the content of the little page.</h3>
-
       <h4 id="status"></h4>
       </p>
     </div>
