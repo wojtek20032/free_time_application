@@ -57,14 +57,6 @@ $id = $_SESSION['user_id'];
       window.location.href = "../login-register/index.php";
     }
   </script>
-  <script>
-    const typingEffect = document.querySelector('.typing-effect');
-        typingEffect.addEventListener('animationend', (event) => {
-            if (event.animationName === 'typing') {
-              typingEffect.style.borderRightColor = 'transparent';
-            }
-        });
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
