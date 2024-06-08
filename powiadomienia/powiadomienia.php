@@ -35,6 +35,10 @@ $id = $_SESSION['user_id'];
       document.getElementById("logout-form").submit();
       window.location.href = "../login-register/index.php";
     }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Kannada:wght@100..800&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -42,7 +46,7 @@ $id = $_SESSION['user_id'];
       <div class="container-fluid" style="display: block">
         <div class="header">
           <div class="dropdown">
-            <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+            <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
               style="padding: 0%">
               <img src="../icons/menu.png" />
             </button>
@@ -57,7 +61,7 @@ $id = $_SESSION['user_id'];
             <h1>Kampa</h1>
           </a>
           <div class="dropdown">
-            <button class="btn btn-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+            <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
               style="padding: 0%">
               <img src="../icons/user.png" />
             </button>

@@ -1,14 +1,13 @@
 <?php
-
 class Event {
-    private $name;
-    private $description;
-    private $date;
-    private $location;
-    private $note;
-    private $participating;
+    public $name;
+    public $description;
+    public $date;
+    public $location;
+    public $note;
+    public $participating;
 
-    public function __construct($name, $description, $date, $location, $note, $participating = 0) {
+    public function __construct($name, $description, $date, $location, $note, $participating) {
         $this->name = $name;
         $this->description = $description;
         $this->date = $date;
@@ -17,20 +16,22 @@ class Event {
         $this->participating = $participating;
     }
 
-    public function save($conn, $idUzytkownika) {
-        $sql = "INSERT INTO calendar_events (idUzytkownika, name, description, date, location, note, participating) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        if ($stmt === false) {
-            error_log('Prepare failed: ' . htmlspecialchars($conn->error));
-            return false;
-        }
-        $stmt->bind_param("isssssi", $idUzytkownika, $this->name, $this->description, $this->date, $this->location, $this->note, $this->participating);
-        if ($stmt->execute()) {
-            return true;
-        } else {
-            error_log('Execute failed: ' . htmlspecialchars($stmt->error));
-            return false;
-        }
+    public function save($conn, $user_id) {
+        $stmt = $conn->prepare("INSERT INTO calendar_events (idUzytkownika, name, description, date, location, note, participating) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("isssssi", $user_id, $this->name, $this->description, $this->date, $this->location, $this->note, $this->participating);
+        return $stmt->execute();
+    }
+
+    public function update($conn, $event_id, $user_id) {
+        $stmt = $conn->prepare("UPDATE calendar_events SET name = ?, description = ?, date = ?, location = ?, note = ?, participating = ? WHERE id = ? AND idUzytkownika = ?");
+        $stmt->bind_param("sssssiis", $this->name, $this->description, $this->date, $this->location, $this->note, $this->participating, $event_id, $user_id);
+        return $stmt->execute();
+    }
+
+    public static function delete($conn, $event_id, $user_id) {
+        $stmt = $conn->prepare("DELETE FROM calendar_events WHERE id = ? AND idUzytkownika = ?");
+        $stmt->bind_param("ii", $event_id, $user_id);
+        return $stmt->execute();
     }
 }
 ?>

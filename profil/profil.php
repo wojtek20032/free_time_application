@@ -15,6 +15,8 @@ $user_data = mysqli_fetch_array($query);
 $username = $user_data['Username'];
 $email = $user_data['E_mail'];
 
+$status = "";
+
 if (isset($_POST['change_password'])) {
     $current_password = sha1($_POST['current_password']);
     $new_password = sha1($_POST['new_password']);
@@ -45,25 +47,13 @@ if (isset($_POST['change_password'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil</title>
     <link rel="stylesheet" href="profil.css">
-    <script>
-        function toggleChangePassword() {
-            var changePasswordSection = document.getElementById('change-password-section');
-            var toggleButton = document.getElementById('toggle-button');
-            if (changePasswordSection.style.display === 'none') {
-                changePasswordSection.style.display = 'block';
-                toggleButton.textContent = 'Hide Change Password';
-            } else {
-                changePasswordSection.style.display = 'none';
-                toggleButton.textContent = 'Change Password';
-            }
-        }
-    </script>
+    <script href ="profil.js"></script>
 </head>
 <body>
     <div class="container">
         <header>
             <img src="../icons/user.png" alt="User Icon">
-            <h1>Mój Profil</h1>
+            <h1 class="profile-title">Mój Profil</h1>
         </header>
         <div class="profile-info">
             <div class="info">
@@ -74,12 +64,12 @@ if (isset($_POST['change_password'])) {
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" value="<?php echo $email; ?>" readonly>
             </div>
-            <button onclick="window.location.href='../menu/menu.php'">Powrót do menu</button>
-            <button id="toggle-button" onclick="toggleChangePassword()">Change Password</button>
+            <button class="styled-button" onclick="window.location.href='../menu/menu.php'">Powrót do menu</button>
+            <button id="toggle-button" class="styled-button">Change Password</button>
         </div>
         <div id="change-password-section" class="change-password" style="display: none;">
             <h2>Change Password</h2>
-            <?php if(isset($status)) { echo "<p>$status</p>"; } ?>
+            <?php if(isset($status)) { echo "<p class='status-message'>$status</p>"; } ?>
             <form method="POST" action="">
                 <div class="info">
                     <label for="current_password">Current Password:</label>
@@ -93,9 +83,11 @@ if (isset($_POST['change_password'])) {
                     <label for="confirm_password">Confirm New Password:</label>
                     <input type="password" id="confirm_password" name="confirm_password" required>
                 </div>
-                <button type="submit" name="change_password">Change Password</button>
+                <button type="submit" name="change_password" class="styled-button">Change Password</button>
             </form>
         </div>
     </div>
+    <script src="profil.js"></script>
 </body>
 </html>
+
