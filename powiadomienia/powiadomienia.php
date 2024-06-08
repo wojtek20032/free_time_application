@@ -36,7 +36,6 @@ $id = $_SESSION['user_id'];
       window.location.href = "../login-register/index.php";
     }</script>
 </head>
-
 <body>
   <header>
     <nav class="navbar navbar-expand-lg">
@@ -89,7 +88,6 @@ $id = $_SESSION['user_id'];
       <h3 id="note_to_change"></h3>
       <p>
       <h3 id="change_of_desc">This is the content of the little page.</h3>
-
       <h4 id="status"></h4>
       </p>
     </div>
