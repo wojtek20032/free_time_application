@@ -79,7 +79,6 @@ const getData = async () => {
     let date_to_verify = (data_to_check.getTime() - data.getTime())/(1000 * 60 * 60 * 24);
     if(date_to_verify<7 && dataGlobal[i].participating ===1){
     let data = new String(dataGlobal[i].date);
-    //console.log(btns)
     btns[j].id = data;
     data_display[j].innerHTML = data;
     event_display[j].innerHTML = dataGlobal[i].description;
@@ -109,31 +108,30 @@ const getData = async () => {
       note_to_change.innerText = "Don't worry";
       text_to_change1.innerText = "You will be notified about changes";
       temp.innerText = "";
-      dataGlobal.forEach(entry =>{
-        let entry_date = new String(entry.date);
-        let str = new String(entry.date+entry.id);
+      for(let i =0; i < dataGlobal.length; i++){
+        let entry_date = new String(dataGlobal[i].date);
+        let str = new String(dataGlobal[i].date+dataGlobal[i].id);
         if(entry_date.localeCompare(entry_to_display)===0){
-          text_to_change.innerText = entry.description;
+          text_to_change.innerText = dataGlobal[i].description;
           let data = new Date();
           let data_to_check = new Date(entry_date + " 23:59:59 GMT+2");
           let date_to_verify = (data_to_check.getTime() - data.getTime())/(1000 * 60 * 60 * 24);
               text_to_change1.innerText = "Status: ";
               temp.innerText =  (date_to_verify >=7 ? "Opcjonalne" : ((date_to_verify >3 &&date_to_verify <7) ? "Wazne" : (date_to_verify <=3 ? "Pilne":"none")));
               temp.style.color =  (date_to_verify >=7 ? "green" : ((date_to_verify >3 &&date_to_verify <7) ? "#FC7A1E" : (date_to_verify <=3 ? "red":"white")));
-              note_to_change.innerText = entry.note;
+              note_to_change.innerText = dataGlobal[i].note;
 
           for(let x = 0;x < store_notif_table.length; x++){
-            console.log(store_notif_table[x]);
-            console.log(str);
             if(str.localeCompare(store_notif_table[x])===0){
             store_notif_table.splice(x,1);
-            
+            console.log(store_notif_table);
           }
         }
-        }
-      });
-      window.localStorage.setItem("cached_notifications",JSON.stringify(store_notif_table));
+        break;
+      }
     }
+    window.localStorage.setItem("cached_notifications",JSON.stringify(store_notif_table));
+  }
 });
 span.onclick = function() {
   modal.style.display = "none";
