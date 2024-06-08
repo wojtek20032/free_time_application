@@ -99,6 +99,7 @@ const getData = async () => {
       } 
     });
     btn.onclick = function() {
+    let store_notif_table = JSON.parse(window.localStorage.getItem("cached_notifications"));
     modal.style.display = "block";
     let entry_to_display = new String(btn.getAttribute('id'));
       let temp = document.getElementById("status"); 
@@ -110,6 +111,7 @@ const getData = async () => {
       temp.innerText = "";
       dataGlobal.forEach(entry =>{
         let entry_date = new String(entry.date);
+        let str = new String(entry.date+entry.id);
         if(entry_date.localeCompare(entry_to_display)===0){
           text_to_change.innerText = entry.description;
           let data = new Date();
@@ -119,8 +121,18 @@ const getData = async () => {
               temp.innerText =  (date_to_verify >=7 ? "Opcjonalne" : ((date_to_verify >3 &&date_to_verify <7) ? "Wazne" : (date_to_verify <=3 ? "Pilne":"none")));
               temp.style.color =  (date_to_verify >=7 ? "green" : ((date_to_verify >3 &&date_to_verify <7) ? "#FC7A1E" : (date_to_verify <=3 ? "red":"white")));
               note_to_change.innerText = entry.note;
+
+          for(let x = 0;x < store_notif_table.length; x++){
+            console.log(store_notif_table[x]);
+            console.log(str);
+            if(str.localeCompare(store_notif_table[x])===0){
+            store_notif_table.splice(x,1);
+            
+          }
+        }
         }
       });
+      window.localStorage.setItem("cached_notifications",JSON.stringify(store_notif_table));
     }
 });
 span.onclick = function() {
@@ -131,6 +143,13 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
+}
+console.log(window.localStorage);
+if(document.cookie.split("; ").find((row) => row.startsWith("get_notif_once"))){
+    console.log("cookie set");
+}
+else{
+  console.log("cookie unset");
 }
 })();
 
