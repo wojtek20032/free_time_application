@@ -1,5 +1,12 @@
 body {
-  background-color: #FCAE1E;
+  background-color: aliceblue;
+}
+
+header {
+  max-height: 90px;
+  margin-bottom: 20px;
+  background-color: #fcae1e;
+  border-bottom: #7a3803 solid 2px;
 }
 
 .dropdown-item {
@@ -40,6 +47,17 @@ h1{
 h2,h3,h4,h5,li a,button {
   font-family: 'Anek Kannada', sans-serif !important;
   color:#FCAE1E !important;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  padding: 10px 20px;
+  font-size: 18px;
 }
 
 #main-content{
@@ -104,9 +122,13 @@ h2,h3,h4,h5,li a,button {
   max-width: 600px;
 }
 
+.close, #change_text_on_click, #note_to_change, #change_of_desc, #status{
+  margin-bottom: 3%;
+}
+
 .close {
   color: #aaa;
-  float: right;
+  float: left;
   font-size: 28px;
   font-weight: bold;
 }
@@ -121,3 +143,4 @@ h2,h3,h4,h5,li a,button {
 #status{
   color:black;
 }
+

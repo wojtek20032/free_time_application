@@ -57,6 +57,14 @@ $id = $_SESSION['user_id'];
       window.location.href = "../login-register/index.php";
     }
   </script>
+  <script>
+    const typingEffect = document.querySelector('.typing-effect');
+        typingEffect.addEventListener('animationend', (event) => {
+            if (event.animationName === 'typing') {
+              typingEffect.style.borderRightColor = 'transparent';
+            }
+        });
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
@@ -71,8 +79,7 @@ $id = $_SESSION['user_id'];
         <div class="container-fluid" style="display: block">
           <div class="header">
             <div class="dropdown">
-              <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                style="padding: 0%">
+              <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0%">
                 <img src="../icons/menu.png" />
               </button>
               <ul class="dropdown-menu">
@@ -87,8 +94,7 @@ $id = $_SESSION['user_id'];
               <h1>Kampa</h1>
             </a>
             <div class="dropdown">
-              <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                style="padding: 0%">
+              <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0%">
                 <img src="../icons/user.png" />
               </button>
               <ul class="dropdown-menu dropdown-menu-right" id="profile">
@@ -117,7 +123,7 @@ $id = $_SESSION['user_id'];
         ?></h1>
       </div>
       <div class="desc col-12">
-        <h1>Znajdz sobie cos do zrobienia w czasie wolnym !</h1>
+        <h1 class="typing-effect">Znajdz sobie cos do zrobienia w czasie wolnym !</h1>
       </div>
       <div class="search-bar">
         <nav class="navbar">
