@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color:  #FCAE1E;
     color: #333;
     line-height: 1.6;
     margin: 0;
@@ -34,7 +34,7 @@ body {
 
 .buttons-container button {
     margin: 0 10px;
-    background-color: #4CAF50; 
+    background-color: #7A3803; 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -58,8 +58,8 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 15px;
-    max-width: 400px; /* Nowa maksymalna szerokość formularza */
-    margin: 0 auto; /* Centralizacja formularza */
+    max-width: 400px; 
+    margin: 0 auto; 
 }
 
 .event-form h2 {
@@ -78,7 +78,7 @@ body {
     padding: 8px;
     font-size: 14px;
     border-radius: 5px;
-    max-width: 100%; /* Nowa maksymalna szerokość elementów formularza */
+    max-width: 100%;
 }
 
 .event-form input:focus,
@@ -90,7 +90,7 @@ body {
 
 .event-form button {
     padding: 10px 20px;
-    background-color: #28a745;
+    background-color:  #7A3803;
     color: rgb(255, 255, 255);
     border: none;
     cursor: pointer;
@@ -104,7 +104,7 @@ body {
 
 
 .styled-button {
-    background-color: #4CAF50; 
+   background-color: #7A3803;
     border: none;
     color: white;
     padding: 15px 32px;
