@@ -187,11 +187,11 @@ $id = $_SESSION['user_id'];
   </script>
   <script>
     if ("Notification" in window) {
-    if (Notification.permission === "granted" && pageAccessedByReload == false && (document.cookie.split("; ").find((row) => row.startsWith("get_notif_once")))) {
+    if (Notification.permission === "granted" && pageAccessedByReload == false && JSON.parse(window.localStorage.getItem("cached_notifications")).length>0) {
         notify();
     } else {
         Notification.requestPermission().then(res => {
-            if (res === "granted"  && pageAccessedByReload == false && (document.cookie.split("; ").find((row) => row.startsWith("get_notif_once")))) {
+            if (res === "granted"  && pageAccessedByReload == false && JSON.parse(window.localStorage.getItem("cached_notifications")).length>0) {
                 notify();
             } 
         })

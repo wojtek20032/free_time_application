@@ -1,3 +1,7 @@
+
+
+
+
 // if(document.cookie.split("; ").find((row) => row.startsWith("get_notif_once"))){
 //   console.log("cookie set");
 // }
@@ -33,7 +37,7 @@ const getData = async () => {
           method: "POST",
           headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
   },
-  body: "record_to_be_deleted=" + dataGlobal[i].id
+          body: "record_to_be_deleted=" + dataGlobal[i].id
         });
         if(document.cookie.split("; ").find((row) => row.startsWith("get_notif_once"))){
           document.cookie = "get_notif_once=; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=None; Secure; Path=/free_time_application";

@@ -1,3 +1,6 @@
+
+
+
 var modal = document.getElementById("myModal");
 
 var btns;
@@ -75,28 +78,33 @@ const getData = async () => {
   for(let i =0; i < dataGlobal.length;i++){
     let entry_date = new String(dataGlobal[i].date);
     let data = new Date();
+    let data_string = new String(dataGlobal[i].date);
     let data_to_check = new Date(entry_date + " 23:59:59 GMT+2");
     let date_to_verify = (data_to_check.getTime() - data.getTime())/(1000 * 60 * 60 * 24);
     if(date_to_verify<7 && dataGlobal[i].participating ===1){
-    let data = new String(dataGlobal[i].date);
-    btns[j].id = data;
-    data_display[j].innerHTML = data;
+    let id = new String(dataGlobal[i].date+dataGlobal[i].id);
+    btns[j].id = id;
+    data_display[j].innerHTML = data_string;
     event_display[j].innerHTML = dataGlobal[i].description;
     j++;
     }
   }
   btns.forEach(function(btn){
     let entry_to_display = new String(btn.getAttribute('id'));
-    dataGlobal.forEach(entry =>{
-      let entry_date = new String(entry.date);
+    console.log(entry_to_display);
+    for(let i =0; i < dataGlobal.length; i++){
+      let entry_date = new String(dataGlobal[i].date+dataGlobal[i].id);
+      console.log(entry_date);
       if(entry_date.localeCompare(entry_to_display)===0){
         let data = new Date();
-        let data_to_check = new Date(entry_date + " 23:59:59 GMT+2");
+        let data_to_check = new Date(new String(dataGlobal[i].date) + " 23:59:59 GMT+2");
           let date_to_verify = (data_to_check.getTime() - data.getTime())/(1000 * 60 * 60 * 24);
           btn.innerText =  (date_to_verify>=7 ? "Opcjonalne" : ((date_to_verify >3 &&date_to_verify <7) ? "Wazne" : (date_to_verify <=3 ? "Pilne":"none")));
           btn.style.backgroundColor =  (date_to_verify >=7 ? "green" : ((date_to_verify >3 &&date_to_verify <7) ? "#FC7A1E" : (date_to_verify <=3 ? "red":"white")));
-      } 
-    });
+          break;
+        } 
+    }
+    
     btn.onclick = function() {
     let store_notif_table = JSON.parse(window.localStorage.getItem("cached_notifications"));
     modal.style.display = "block";
@@ -109,12 +117,11 @@ const getData = async () => {
       text_to_change1.innerText = "You will be notified about changes";
       temp.innerText = "";
       for(let i =0; i < dataGlobal.length; i++){
-        let entry_date = new String(dataGlobal[i].date);
-        let str = new String(dataGlobal[i].date+dataGlobal[i].id);
+        let entry_date = new String(dataGlobal[i].date+dataGlobal[i].id);
         if(entry_date.localeCompare(entry_to_display)===0){
           text_to_change.innerText = dataGlobal[i].description;
           let data = new Date();
-          let data_to_check = new Date(entry_date + " 23:59:59 GMT+2");
+          let data_to_check = new Date(new String(dataGlobal[i].date) + " 23:59:59 GMT+2");
           let date_to_verify = (data_to_check.getTime() - data.getTime())/(1000 * 60 * 60 * 24);
               text_to_change1.innerText = "Status: ";
               temp.innerText =  (date_to_verify >=7 ? "Opcjonalne" : ((date_to_verify >3 &&date_to_verify <7) ? "Wazne" : (date_to_verify <=3 ? "Pilne":"none")));
@@ -122,7 +129,7 @@ const getData = async () => {
               note_to_change.innerText = dataGlobal[i].note;
 
           for(let x = 0;x < store_notif_table.length; x++){
-            if(str.localeCompare(store_notif_table[x])===0){
+            if(entry_date.localeCompare(store_notif_table[x])===0){
             store_notif_table.splice(x,1);
             console.log(store_notif_table);
           }
