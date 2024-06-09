@@ -146,6 +146,13 @@ function addEvent() {
     let note = document.getElementById('note').value;
     let participating = document.getElementById('participating').checked ? 1 : 0;
 
+    let currentDate = new Date();
+    let selectedDate = new Date(date);
+    if (selectedDate < currentDate) {
+        alert("Date cannot be earlier than current date.");
+        return;
+    }
+
     let formData = new FormData();
     formData.append('idUzytkownika', idUzytkownika);
     formData.append('date', date);
@@ -182,6 +189,13 @@ function modifyEvent() {
     let location = document.getElementById('location').value;
     let note = document.getElementById('note').value;
     let participating = document.getElementById('participating').checked ? 1 : 0;
+
+    let currentDate = new Date();
+    let selectedDate = new Date(date);
+    if (selectedDate < currentDate) {
+        alert("Date cannot be earlier than current date.");
+        return;
+    }
 
     let formData = new FormData();
     formData.append('idUzytkownika', idUzytkownika);

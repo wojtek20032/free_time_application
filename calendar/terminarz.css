@@ -1,7 +1,6 @@
-
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+    background-color:  #FCAE1E;
     color: #333;
     line-height: 1.6;
     margin: 0;
@@ -35,7 +34,7 @@ body {
 
 .buttons-container button {
     margin: 0 10px;
-    background-color: #4CAF50; 
+    background-color: #7A3803; 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -58,7 +57,9 @@ body {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 15px;
+    max-width: 400px; 
+    margin: 0 auto; 
 }
 
 .event-form h2 {
@@ -73,11 +74,11 @@ body {
 .event-form input,
 .event-form textarea,
 .event-form button {
-    margin: 10px 0;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
+    margin: 5px 0;
+    padding: 8px;
+    font-size: 14px;
     border-radius: 5px;
+    max-width: 100%;
 }
 
 .event-form input:focus,
@@ -88,7 +89,8 @@ body {
 }
 
 .event-form button {
-    background-color: #28a745;
+    padding: 10px 20px;
+    background-color:  #7A3803;
     color: rgb(255, 255, 255);
     border: none;
     cursor: pointer;
@@ -102,7 +104,7 @@ body {
 
 
 .styled-button {
-    background-color: #4CAF50; 
+   background-color: #7A3803;
     border: none;
     color: white;
     padding: 15px 32px;
