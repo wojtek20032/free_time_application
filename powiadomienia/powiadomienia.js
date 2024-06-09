@@ -1,3 +1,6 @@
+
+
+
 var modal = document.getElementById("myModal");
 
 var btns;

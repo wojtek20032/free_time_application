@@ -85,3 +85,4 @@ const getData = async () => {
     }
     console.log(window.localStorage);
   })();
+
