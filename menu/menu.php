@@ -71,8 +71,7 @@ $id = $_SESSION['user_id'];
         <div class="container-fluid" style="display: block">
           <div class="header">
             <div class="dropdown">
-              <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                style="padding: 0%">
+              <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0%">
                 <img src="../icons/menu.png" />
               </button>
               <ul class="dropdown-menu">
@@ -87,8 +86,7 @@ $id = $_SESSION['user_id'];
               <h1>Kampa</h1>
             </a>
             <div class="dropdown">
-              <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                style="padding: 0%">
+              <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0%">
                 <img src="../icons/user.png" />
               </button>
               <ul class="dropdown-menu dropdown-menu-right" id="profile">
@@ -117,7 +115,8 @@ $id = $_SESSION['user_id'];
         ?></h1>
       </div>
       <div class="desc col-12">
-        <h1>Znajdz sobie cos do zrobienia w czasie wolnym !</h1>
+        <h1 class="typing-effect">Znajdz sobie cos do zrobienia w czasie wolnym !</h1>
+        
       </div>
       <div class="search-bar">
         <nav class="navbar">
@@ -178,6 +177,46 @@ $id = $_SESSION['user_id'];
     </footer>
   </div>
   <script src="menu.js"></script>
+  <script>
+    let typingEffect = document.getElementsByClassName("typing-effect")[0];
+        typingEffect.addEventListener('animationend', (event) => {
+            if (event.animationName === 'typing') {
+              typingEffect.style.borderRightColor = 'transparent';
+            }
+        });
+  </script>
+  <script>
+    if ("Notification" in window) {
+    if (Notification.permission === "granted" && pageAccessedByReload == false && JSON.parse(window.localStorage.getItem("cached_notifications")).length>0) {
+        notify();
+    } else {
+        Notification.requestPermission().then(res => {
+            if (res === "granted"  && pageAccessedByReload == false && JSON.parse(window.localStorage.getItem("cached_notifications")).length>0) {
+                notify();
+            } 
+        })
+    }
+} else {
+    console.error("Browser does not support notifications");
+}
+
+function notify() {
+    let len = JSON.parse(window.localStorage.getItem("cached_notifications")).length;
+    let str = (len ==1 ? " powiadomienie" : (len <5 ? " powiadomienia" : " powiadomien" ));
+    const notification = new Notification('Powiadomienia',{
+        body: 'Masz ' +len + str + ', sprawdz!',
+        icon: 'https://unsplash.it/400/400',
+        vibration: [300,200,300],
+    });
+
+    notification.addEventListener('click', function() {
+        window.location.href = '../powiadomienia/powiadomienia.php' ;
+    });
+
+    setTimeout(() => notification.close(), 5*1000);
+
+}
+    </script>
 </body>
 
 </html>
