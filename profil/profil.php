@@ -47,7 +47,7 @@ if (isset($_POST['change_password'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil</title>
     <link rel="stylesheet" href="profil.css">
-    <script href ="profil.js"></script>
+    <script defer src="profil.js"></script>
 </head>
 <body>
     <div class="container">
@@ -65,29 +65,34 @@ if (isset($_POST['change_password'])) {
                 <input type="email" id="email" name="email" value="<?php echo $email; ?>" readonly>
             </div>
             <button class="styled-button" onclick="window.location.href='../menu/menu.php'">Powrót do menu</button>
-            <button id="toggle-button" class="styled-button">Change Password</button>
-        </div>
-        <div id="change-password-section" class="change-password" style="display: none;">
-            <h2>Change Password</h2>
-            <?php if(isset($status)) { echo "<p class='status-message'>$status</p>"; } ?>
-            <form method="POST" action="">
-                <div class="info">
-                    <label for="current_password">Current Password:</label>
-                    <input type="password" id="current_password" name="current_password" required>
-                </div>
-                <div class="info">
-                    <label for="new_password">New Password:</label>
-                    <input type="password" id="new_password" name="new_password" required>
-                </div>
-                <div class="info">
-                    <label for="confirm_password">Confirm New Password:</label>
-                    <input type="password" id="confirm_password" name="confirm_password" required>
-                </div>
-                <button type="submit" name="change_password" class="styled-button">Change Password</button>
-            </form>
+            <button class="styled-button" id="toggle-button">Change Password</button>
+            <div class="change-password" id="change-password-section" style="display: none;">
+                <h2>Change Password</h2>
+                <form action="" method="post">
+                    <div class="info">
+                        <label for="current_password">Current Password:</label>
+                        <input type="password" id="current_password" name="current_password" required>
+                    </div>
+                    <div class="info">
+                        <label for="new_password">New Password:</label>
+                        <input type="password" id="new_password" name="new_password" required>
+                    </div>
+                    <div class="info">
+                        <label for="confirm_password">Confirm New Password:</label>
+                        <input type="password" id="confirm_password" name="confirm_password" required>
+                    </div>
+                    <button type="submit" name="change_password" class="styled-button">Submit</button>
+                </form>
+            </div>
+            <div id="status-message" style="display: none;"><?php echo $status; ?></div>
         </div>
     </div>
-    <script src="profil.js"></script>
+
+    <div id="status-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <p id="modal-message"></p>
+        </div>
+    </div>
 </body>
 </html>
-
