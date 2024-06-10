@@ -82,7 +82,7 @@ $id = $_SESSION['user_id'];
                   <li><a class="dropdown-item" href="../menu/menu.php">Menu</a></li>
                 </ul>
               </div>
-              <a href="#"><img src="../icons/calendar.png" id="calendar"></a>
+              <a href="../kalendarz/kalendarz.php"><img src="../icons/calendar.png" id="calendar"></a>
             </div>
             <a class="navbar-brand" href="../menu/menu.php">
               <h1>Kampa</h1>
