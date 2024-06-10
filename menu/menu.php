@@ -76,10 +76,9 @@ $id = $_SESSION['user_id'];
                   <img src="../icons/menu.png" />
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="../calendar/terminarz.php">Terminarz</a></li>
+                  <li><a class="dropdown-item" href="../event/terminarz.php">Terminarz</a></li>
                   <li><a class="dropdown-item" href="https://onedrive.live.com/login/">OneDrive</a></li>
                   <li><a class="dropdown-item" href="https://github.com">GitHub</a></li>
-
                   <li><a class="dropdown-item" href="../menu/menu.php">Menu</a></li>
                 </ul>
               </div>
