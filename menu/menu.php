@@ -70,34 +70,38 @@ $id = $_SESSION['user_id'];
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid" style="display: block">
           <div class="header">
-            <div class="dropdown">
-              <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0%">
-                <img src="../icons/menu.png" />
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="../event/terminarz.php">Terminarz</a></li>
-                <li><a class="dropdown-item" href="https://onedrive.live.com/login/">OneDrive</a></li>
-                <li><a class="dropdown-item" href="https://github.com">GitHub</a></li>
-
-                <li><a class="dropdown-item" href="../menu/menu.php">Menu</a></li>
-              </ul>
+            <div class="left">
+              <div class="dropdown">
+                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0%">
+                  <img src="../icons/menu.png" />
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="../event/terminarz.php">Terminarz</a></li>
+                  <li><a class="dropdown-item" href="https://onedrive.live.com/login/">OneDrive</a></li>
+                  <li><a class="dropdown-item" href="https://github.com">GitHub</a></li>
+                  <li><a class="dropdown-item" href="../menu/menu.php">Menu</a></li>
+                </ul>
+              </div>
+              <a href="#"><img src="../icons/calendar.png" id="calendar"></a>
             </div>
             <a class="navbar-brand" href="../menu/menu.php">
               <h1>Kampa</h1>
             </a>
-            <div class="dropdown">
-              <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0%">
-                <img src="../icons/user.png" />
-              </button>
-              <ul class="dropdown-menu dropdown-menu-right" id="profile">
-                <li><a class="dropdown-item" href="../profil/profil.php">Profil</a></li>
-                <li><a class="dropdown-item" href="../powiadomienia/powiadomienia.php">Powiadomienia</a></li>
-                <li>
-                  <form id="logout-form" method="POST">
-                    <button class="dropdown-item" name="sign_out" type="submit" onclick="logout()">Wyloguj</button>
-                  </form>
-                </li>
-              </ul>
+            <div class="right">
+              <a href="../powiadomienia/powiadomienia.php"><img src="../icons/bell.png" id="bell"></a>
+              <div class="dropdown">
+                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0%">
+                  <img src="../icons/user.png" />
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" id="profile">
+                  <li><a class="dropdown-item" href="../profil/profil.php">Profil</a></li>
+                  <li>
+                    <form id="logout-form" method="POST">
+                      <button class="dropdown-item" name="sign_out" type="submit" onclick="logout()">Wyloguj</button>
+                    </form>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -116,7 +120,7 @@ $id = $_SESSION['user_id'];
       </div>
       <div class="desc col-12">
         <h1 class="typing-effect">Znajdz sobie cos do zrobienia w czasie wolnym !</h1>
-        
+
       </div>
       <div class="search-bar">
         <nav class="navbar">
@@ -179,44 +183,44 @@ $id = $_SESSION['user_id'];
   <script src="menu.js"></script>
   <script>
     let typingEffect = document.getElementsByClassName("typing-effect")[0];
-        typingEffect.addEventListener('animationend', (event) => {
-            if (event.animationName === 'typing') {
-              typingEffect.style.borderRightColor = 'transparent';
-            }
-        });
+    typingEffect.addEventListener('animationend', (event) => {
+      if (event.animationName === 'typing') {
+        typingEffect.style.borderRightColor = 'transparent';
+      }
+    });
   </script>
   <script>
     if ("Notification" in window) {
-    if (Notification.permission === "granted" && pageAccessedByReload == false && JSON.parse(window.localStorage.getItem("cached_notifications")).length>0) {
+      if (Notification.permission === "granted" && pageAccessedByReload == false && JSON.parse(window.localStorage.getItem("cached_notifications")).length > 0) {
         notify();
-    } else {
+      } else {
         Notification.requestPermission().then(res => {
-            if (res === "granted"  && pageAccessedByReload == false && JSON.parse(window.localStorage.getItem("cached_notifications")).length>0) {
-                notify();
-            } 
+          if (res === "granted" && pageAccessedByReload == false && JSON.parse(window.localStorage.getItem("cached_notifications")).length > 0) {
+            notify();
+          }
         })
+      }
+    } else {
+      console.error("Browser does not support notifications");
     }
-} else {
-    console.error("Browser does not support notifications");
-}
 
-function notify() {
-    let len = JSON.parse(window.localStorage.getItem("cached_notifications")).length;
-    let str = (len ==1 ? " powiadomienie" : (len <5 ? " powiadomienia" : " powiadomien" ));
-    const notification = new Notification('Powiadomienia',{
-        body: 'Masz ' +len + str + ', sprawdz!',
+    function notify() {
+      let len = JSON.parse(window.localStorage.getItem("cached_notifications")).length;
+      let str = (len == 1 ? " powiadomienie" : (len < 5 ? " powiadomienia" : " powiadomien"));
+      const notification = new Notification('Powiadomienia', {
+        body: 'Masz ' + len + str + ', sprawdz!',
         icon: 'https://unsplash.it/400/400',
-        vibration: [300,200,300],
-    });
+        vibration: [300, 200, 300],
+      });
 
-    notification.addEventListener('click', function() {
-        window.location.href = '../powiadomienia/powiadomienia.php' ;
-    });
+      notification.addEventListener('click', function () {
+        window.location.href = '../powiadomienia/powiadomienia.php';
+      });
 
-    setTimeout(() => notification.close(), 5*1000);
+      setTimeout(() => notification.close(), 5 * 1000);
 
-}
-    </script>
+    }
+  </script>
 </body>
 
 </html>
