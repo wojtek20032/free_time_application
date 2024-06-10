@@ -67,9 +67,8 @@ $id = $_SESSION['user_id'];
             </button>
             <ul class="dropdown-menu dropdown-menu-right" id="profile">
               <li><a class="dropdown-item" href="../profil/profil.php">Profil</a></li>
-              <li><a class="dropdown-item" href="../powiadomienia/powiadomienia.php">Powiadomienia</a></li>
               <li>
-                <form id="logout-form" method="POST">
+                <form id="logout-form" method="POST" style="margin-bottom: 0">
                   <button class="dropdown-item" name="sign_out" type="submit" onclick="logout()">Wyloguj</button>
                 </form>
               </li>

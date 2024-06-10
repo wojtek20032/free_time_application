@@ -21,8 +21,26 @@ input {
   font-family: "Anek Kannada", sans-serif !important;
 }
 
+.navbar-brand{
+  margin-right:0px !important;
+  margin-left: 50px;
+}
+
 .dropdown-item {
   color: #fcae1e;
+}
+
+.right{
+  display:flex;
+  justify-content: flex-end;
+}
+
+#bell{
+  background-color: #7a3803;
+  border-radius:10px;
+  margin-right: 20px;
+  height:100%;
+  width:61.6px;  
 }
 
 .dropdown,
