@@ -18,7 +18,23 @@ const getData = async () => {
   dataGlobal = data;
   return data;
 };
-
+const get_updated_data = async () => {
+  let table = [];
+  let temp = JSON.parse(window.localStorage.getItem("cached_notifications"));
+  for(let i =0; i < JSON.parse(window.localStorage.getItem("cached_notifications")).length;i++){
+  let fetch_Data = await fetch("fetch_updated.php",{
+    method: "POST",
+    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+},
+    body: "record=" + temp[i]
+  });
+  fetch_Data.json().then((result)=>{
+    table[i] = result[0];
+  });
+  
+  }
+  return table;
+}
 (async () => {
   await getData();
   do{
@@ -106,8 +122,11 @@ const getData = async () => {
     }
     
     btn.onclick = function() {
+    let store_elements_from_div_row = Array.from(document.getElementsByClassName("row")[0].children);
     let store_notif_table = JSON.parse(window.localStorage.getItem("cached_notifications"));
     modal.style.display = "block";
+    //console.log(store_elements_from_div_row);
+    //console.log()[0].children[0].children[0].children[2].firstElementChild.id);
     let entry_to_display = new String(btn.getAttribute('id'));
       let temp = document.getElementById("status"); 
       let note_to_change = document.getElementById("note_to_change"); 
@@ -130,6 +149,7 @@ const getData = async () => {
 
           for(let x = 0;x < store_notif_table.length; x++){
             if(entry_date.localeCompare(store_notif_table[x])===0){
+            store_elements_from_div_row[x].remove();
             store_notif_table.splice(x,1);
             console.log(store_notif_table);
           }
@@ -138,6 +158,9 @@ const getData = async () => {
       }
     }
     window.localStorage.setItem("cached_notifications",JSON.stringify(store_notif_table));
+    get_updated_data().then((result) =>{
+        console.log(result);
+    });
   }
 });
 span.onclick = function() {
