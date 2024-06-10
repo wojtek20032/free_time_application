@@ -23,14 +23,13 @@ input {
 
 .navbar-brand{
   margin-right:0px !important;
-  margin-left: 50px;
 }
 
 .dropdown-item {
   color: #fcae1e;
 }
 
-.right{
+.right, .left{
   display:flex;
   justify-content: flex-end;
 }
@@ -39,6 +38,14 @@ input {
   background-color: #7a3803;
   border-radius:10px;
   margin-right: 20px;
+  height:100%;
+  width:61.6px;  
+}
+
+#calendar{
+  background-color: #7a3803;
+  border-radius:10px;
+  margin-left: 20px;
   height:100%;
   width:61.6px;  
 }

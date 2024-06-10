@@ -70,17 +70,20 @@ $id = $_SESSION['user_id'];
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid" style="display: block">
           <div class="header">
-            <div class="dropdown">
-              <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0%">
-                <img src="../icons/menu.png" />
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="../calendar/terminarz.php">Terminarz</a></li>
-                <li><a class="dropdown-item" href="https://onedrive.live.com/login/">OneDrive</a></li>
-                <li><a class="dropdown-item" href="https://github.com">GitHub</a></li>
+            <div class="left">
+              <div class="dropdown">
+                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 0%">
+                  <img src="../icons/menu.png" />
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="../calendar/terminarz.php">Terminarz</a></li>
+                  <li><a class="dropdown-item" href="https://onedrive.live.com/login/">OneDrive</a></li>
+                  <li><a class="dropdown-item" href="https://github.com">GitHub</a></li>
 
-                <li><a class="dropdown-item" href="../menu/menu.php">Menu</a></li>
-              </ul>
+                  <li><a class="dropdown-item" href="../menu/menu.php">Menu</a></li>
+                </ul>
+              </div>
+              <a href="#"><img src="../icons/calendar.png" id="calendar"></a>
             </div>
             <a class="navbar-brand" href="../menu/menu.php">
               <h1>Kampa</h1>
