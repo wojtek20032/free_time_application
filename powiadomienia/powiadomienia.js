@@ -30,23 +30,6 @@ const getData = async () => {
   dataGlobal = table;
   return table;
 };
-const get_updated_data = async () => {
-  let table = [];
-  let temp = JSON.parse(window.localStorage.getItem("cached_notifications"));
-  for(let i =0; i < JSON.parse(window.localStorage.getItem("cached_notifications")).length;i++){
-  let fetch_Data = await fetch("fetch_updated.php",{
-    method: "POST",
-    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-},
-    body: "record=" + temp[i]
-  });
-  fetch_Data.json().then((result)=>{
-    table[i] = result[0];
-  });
-  
-  }
-  return table;
-}
 (async () => {
   await getData();
   console.log(dataGlobal.length);
@@ -175,9 +158,6 @@ const get_updated_data = async () => {
       }
     }
     window.localStorage.setItem("cached_notifications",JSON.stringify(store_notif_table));
-    // get_updated_data().then((result) =>{
-    //     console.log(result);
-    // });
   }
 });
 span.onclick = function() {
