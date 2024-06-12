@@ -13,10 +13,22 @@ let temp_data;
 let end;
 let dataGlobal;
 const getData = async () => {
-  const response = await fetch("../calendar/get_events.php");
-  const data = await response.json();
-  dataGlobal = data;
-  return data;
+  const table = [];
+  let temp = JSON.parse(window.localStorage.getItem("cached_notifications"));
+  console.log(temp.length);
+  for(let i =0; i <=temp.length;i++){
+  const response = await fetch("fetch_updated.php",{
+    method: "POST",
+    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+},
+    body: "record=" + temp[i]
+  });
+  response.json().then((result)=>{
+    table[i] = result[0];
+  });
+}
+  dataGlobal = table;
+  return table;
 };
 const get_updated_data = async () => {
   let table = [];
@@ -37,6 +49,7 @@ const get_updated_data = async () => {
 }
 (async () => {
   await getData();
+  console.log(dataGlobal.length);
   do{
     end = 0;
     for(let i =0; i< dataGlobal.length-1; i++){
@@ -50,11 +63,14 @@ const get_updated_data = async () => {
       }
     }
   } while(end!=0);
+  console.log(dataGlobal.length);
   for(let i =0; i < dataGlobal.length;i++){
     let entry_date = new String(dataGlobal[i].date);
     let data = new Date();
     let data_to_check = new Date(entry_date + " 23:59:59 GMT+2");
     let date_to_verify = (data_to_check.getTime() - data.getTime())/(1000 * 60 * 60 * 24);
+    console.log(i);
+    console.log(date_to_verify<7 && dataGlobal[i].participating ===1);
     if(date_to_verify<7 && dataGlobal[i].participating ===1){
     let container_to_append = document.getElementsByClassName("row");
     let main_container_for_reminder = document.createElement("div");
@@ -90,6 +106,7 @@ const get_updated_data = async () => {
   data_display.forEach(function(data){
     data.innerHTML = "Nieprzydzielona";
   });
+  console.log(dataGlobal.length);
   let j =0;
   for(let i =0; i < dataGlobal.length;i++){
     let entry_date = new String(dataGlobal[i].date);
@@ -158,9 +175,9 @@ const get_updated_data = async () => {
       }
     }
     window.localStorage.setItem("cached_notifications",JSON.stringify(store_notif_table));
-    get_updated_data().then((result) =>{
-        console.log(result);
-    });
+    // get_updated_data().then((result) =>{
+    //     console.log(result);
+    // });
   }
 });
 span.onclick = function() {
