@@ -1,14 +1,4 @@
 
-
-
-
-// if(document.cookie.split("; ").find((row) => row.startsWith("get_notif_once"))){
-//   console.log("cookie set");
-// }
-// else{
-// console.log("cookie unset");
-// }
-
 const pageAccessedByReload = (
   window.performance
       .getEntriesByType('navigation')
@@ -18,7 +8,7 @@ const pageAccessedByReload = (
 var date_display = document.querySelectorAll(".card-title");
 
 const getData = async () => {
-    const response = await fetch("../calendar/get_events.php");
+    const response = await fetch("../event/get_events.php");
     const data = await response.json();
     dataGlobal = data;
     return data;

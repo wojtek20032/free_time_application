@@ -13,7 +13,7 @@ let temp_data;
 let end;
 let dataGlobal;
 const getData = async () => {
-  const response = await fetch("../calendar/get_events.php");
+  const response = await fetch("../event/get_events.php");
   const data = await response.json();
   dataGlobal = data;
   return data;
