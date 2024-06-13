@@ -1,14 +1,3 @@
-
-
-
-
-// if(document.cookie.split("; ").find((row) => row.startsWith("get_notif_once"))){
-//   console.log("cookie set");
-// }
-// else{
-// console.log("cookie unset");
-// }
-
 const pageAccessedByReload = (
   window.performance
       .getEntriesByType('navigation')
@@ -66,7 +55,6 @@ const getData = async () => {
       } while(end!=0);
     if(!document.cookie.split("; ").find((row) => row.startsWith("get_notif_once"))){
       window.localStorage.removeItem("cached_notifications");
-      console.log("here");
       let keys = [];
       let j =0;
       for(let i =0; i< dataGlobal.length; i++){
@@ -76,14 +64,11 @@ const getData = async () => {
       let date_to_verify = (data_to_check.getTime() - data.getTime())/(1000 * 60 * 60 * 24);
       if(date_to_verify<7 && dataGlobal[i].participating ===1){        
         let str = new String(dataGlobal[i].date+dataGlobal[i].id);
-        console.log(str);
         keys[j] = str;
         j++;
       }
     }
-    console.log(keys);
     window.localStorage.setItem("cached_notifications",JSON.stringify(keys));
-    console.log("here");
     let data = new String(new Date(new Date().getTime() + 1800000));
     document.cookie = "get_notif_once=true; expires="+data+"; SameSite=None; Secure; Path=/free_time_application";
   }
@@ -94,5 +79,4 @@ const getData = async () => {
          date_display[i].innerHTML = temp_string;
         }else date_display[i].innerHTML = "Nieprzydzielona";
     }
-    console.log(window.localStorage);
   })();

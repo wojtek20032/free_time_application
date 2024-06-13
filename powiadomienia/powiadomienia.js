@@ -15,7 +15,6 @@ let dataGlobal;
 const getData = async () => {
   const table = [];
   let temp = JSON.parse(window.localStorage.getItem("cached_notifications"));
-  console.log(temp.length);
   for(let i =0; i <=temp.length;i++){
   const response = await fetch("fetch_updated.php",{
     method: "POST",
@@ -32,7 +31,6 @@ const getData = async () => {
 };
 (async () => {
   await getData();
-  console.log(dataGlobal.length);
   do{
     end = 0;
     for(let i =0; i< dataGlobal.length-1; i++){
@@ -46,14 +44,11 @@ const getData = async () => {
       }
     }
   } while(end!=0);
-  console.log(dataGlobal.length);
   for(let i =0; i < dataGlobal.length;i++){
     let entry_date = new String(dataGlobal[i].date);
     let data = new Date();
     let data_to_check = new Date(entry_date + " 23:59:59 GMT+2");
     let date_to_verify = (data_to_check.getTime() - data.getTime())/(1000 * 60 * 60 * 24);
-    console.log(i);
-    console.log(date_to_verify<7 && dataGlobal[i].participating ===1);
     if(date_to_verify<7 && dataGlobal[i].participating ===1){
     let container_to_append = document.getElementsByClassName("row");
     let main_container_for_reminder = document.createElement("div");
@@ -89,7 +84,6 @@ const getData = async () => {
   data_display.forEach(function(data){
     data.innerHTML = "Nieprzydzielona";
   });
-  console.log(dataGlobal.length);
   let j =0;
   for(let i =0; i < dataGlobal.length;i++){
     let entry_date = new String(dataGlobal[i].date);
@@ -107,10 +101,8 @@ const getData = async () => {
   }
   btns.forEach(function(btn){
     let entry_to_display = new String(btn.getAttribute('id'));
-    console.log(entry_to_display);
     for(let i =0; i < dataGlobal.length; i++){
       let entry_date = new String(dataGlobal[i].date+dataGlobal[i].id);
-      console.log(entry_date);
       if(entry_date.localeCompare(entry_to_display)===0){
         let data = new Date();
         let data_to_check = new Date(new String(dataGlobal[i].date) + " 23:59:59 GMT+2");
@@ -125,8 +117,6 @@ const getData = async () => {
     let store_elements_from_div_row = Array.from(document.getElementsByClassName("row")[0].children);
     let store_notif_table = JSON.parse(window.localStorage.getItem("cached_notifications"));
     modal.style.display = "block";
-    //console.log(store_elements_from_div_row);
-    //console.log()[0].children[0].children[0].children[2].firstElementChild.id);
     let entry_to_display = new String(btn.getAttribute('id'));
       let temp = document.getElementById("status"); 
       let note_to_change = document.getElementById("note_to_change"); 
@@ -151,7 +141,6 @@ const getData = async () => {
             if(entry_date.localeCompare(store_notif_table[x])===0){
             store_elements_from_div_row[x].remove();
             store_notif_table.splice(x,1);
-            console.log(store_notif_table);
           }
         }
         break;
@@ -169,7 +158,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-console.log(window.localStorage);
 if(document.cookie.split("; ").find((row) => row.startsWith("get_notif_once"))){
     console.log("cookie set");
 }
