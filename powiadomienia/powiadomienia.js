@@ -13,12 +13,22 @@ let temp_data;
 let end;
 let dataGlobal;
 const getData = async () => {
-  const response = await fetch("../event/get_events.php");
-  const data = await response.json();
-  dataGlobal = data;
-  return data;
+  const table = [];
+  let temp = JSON.parse(window.localStorage.getItem("cached_notifications"));
+  for(let i =0; i <=temp.length;i++){
+  const response = await fetch("fetch_updated.php",{
+    method: "POST",
+    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+},
+    body: "record=" + temp[i]
+  });
+  response.json().then((result)=>{
+    table[i] = result[0];
+  });
+}
+  dataGlobal = table;
+  return table;
 };
-
 (async () => {
   await getData();
   do{
@@ -91,10 +101,8 @@ const getData = async () => {
   }
   btns.forEach(function(btn){
     let entry_to_display = new String(btn.getAttribute('id'));
-    console.log(entry_to_display);
     for(let i =0; i < dataGlobal.length; i++){
       let entry_date = new String(dataGlobal[i].date+dataGlobal[i].id);
-      console.log(entry_date);
       if(entry_date.localeCompare(entry_to_display)===0){
         let data = new Date();
         let data_to_check = new Date(new String(dataGlobal[i].date) + " 23:59:59 GMT+2");
@@ -106,6 +114,7 @@ const getData = async () => {
     }
     
     btn.onclick = function() {
+    let store_elements_from_div_row = Array.from(document.getElementsByClassName("row")[0].children);
     let store_notif_table = JSON.parse(window.localStorage.getItem("cached_notifications"));
     modal.style.display = "block";
     let entry_to_display = new String(btn.getAttribute('id'));
@@ -130,8 +139,8 @@ const getData = async () => {
 
           for(let x = 0;x < store_notif_table.length; x++){
             if(entry_date.localeCompare(store_notif_table[x])===0){
+            store_elements_from_div_row[x].remove();
             store_notif_table.splice(x,1);
-            console.log(store_notif_table);
           }
         }
         break;
@@ -149,7 +158,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-console.log(window.localStorage);
 if(document.cookie.split("; ").find((row) => row.startsWith("get_notif_once"))){
     console.log("cookie set");
 }
