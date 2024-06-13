@@ -1,0 +1,167 @@
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #f0f0f0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "Anek Kannada", sans-serif;
+}
+
+h1 {
+    font-family: "Varela Round", sans-serif;
+    color: #7a3803;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.calendar-container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px; 
+    margin: auto;
+    position: relative;
+    margin-top: 30px; 
+    margin-bottom: 30px; 
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.btn-nav {
+    font-size: 1em;
+}
+
+.btn-left {
+    position: absolute;
+    left: -40px; 
+    top: 50%;
+    transform: translateY(-20%);
+}
+
+.btn-right {
+    position: absolute;
+    right: -40px; 
+    top: 50%;
+    transform: translateY(-20%);
+}
+
+.days-row, .dates-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.day-cell, .date-cell {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    background-color: aliceblue;
+    color: #7a3803;
+    border-radius: 5px;
+}
+
+.date-cell {
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.date-cell:hover {
+    background-color: #e0e0e0;
+}
+
+.date-cell.event-day {
+    background-color: #7a3803;
+    color: white;
+    font-weight: bold;
+}
+
+.date-cell.empty-cell {
+    border: none;
+    cursor: default;
+}
+
+#back-to-menu {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+    background-color: #7a3803;
+    color: white;
+    border: none;
+    font-size: 12px;
+    width: 120px;
+    height: 50px;
+    margin: 0 auto; 
+    margin-bottom: 20px; 
+}
+
+#back-to-menu:hover {
+    padding: 7px 15px; 
+    font-size: 14px; 
+}
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    font-family: "Varela Round", sans-serif;
+    color: #7a3803;
+    margin-bottom: 10px;
+}
+
+.modal-content p {
+    font-family: "Anek Kannada", sans-serif;
+    color: #333;
+    margin: 5px 0;
+}
+
+.modal-content strong {
+    color: #7a3803;
+}
