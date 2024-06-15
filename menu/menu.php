@@ -143,22 +143,22 @@ $id = $_SESSION['user_id'];
                   Nawigacja
                 </h5>
                 <div class="steps">
-                  <button onclick="startMovingImage('../icons/arrow.png',1,10)">
+                  <button onclick="startMovingImage('../icons/arrow.png',12,72)">
                     <h5>
                       Jeśli chcesz dodać nowy event, proszimy do Terminarzu
                     </h5>
                   </button>
-                  <button onclick="startMovingImage('../icons/arrow.png',6,10)">
+                  <button onclick="startMovingImage('../icons/arrow.png',94,72)">
                     <h5>
                       Kalendarz pokaże ciebie twoje plany na przyszłość
                     </h5>
                   </button>
-                  <button onclick="startMovingImage('../icons/arrow.png',90,10)">
+                  <button onclick="startMovingImage('../icons/arrow.png',613,72)">
                     <h5>
                       Powiadomienia przypominają o najbliższych eventach
                     </h5>
                   </button>
-                  <button onclick="startMovingImage('../icons/arrow.png',95,10)">
+                  <button onclick="startMovingImage('../icons/arrow.png',695,72)">
                     <h5>
                       W Profilu możesz zmienić hasło
                     </h5>

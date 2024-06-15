@@ -91,24 +91,25 @@ function startMovingImage(src, x, y) {
 
     currentImage = document.createElement('img');
     currentImage.src = src;
-    currentImage.style.left = `${x}vw`;
-    currentImage.style.top = `${y}vh`;
+    currentImage.style.position = 'absolute';
+    currentImage.style.left = `${x}px`;
+    currentImage.style.top = `${y}px`;
     currentImage.style.display = 'block';
 
     imageContainer.appendChild(currentImage);
 
-    const step = 0.5;
+    const step = 1;
     let direction = 1;
 
     intervalId = setInterval(() => {
         y += step * direction;
 
-        if (y >= 15 || y <= 10) {
+        if (y >= 85 || y <= 72) {
             direction *= -1;
         }
 
-        currentImage.style.top = `${y}vh`;
-    }, 50);
+        currentImage.style.top = `${y}px`;
+    }, 30);
 }
 
 function stopMovingImage() {
