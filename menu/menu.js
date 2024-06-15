@@ -84,13 +84,6 @@ const getData = async () => {
       data +
       "; SameSite=None; Secure; Path=/free_time_application";
   }
-
-  for (let i = 0; i < date_display.length; i++) {
-    if (i < dataGlobal.length) {
-      let temp_string = new String(dataGlobal[i].date);
-      date_display[i].innerHTML = temp_string;
-    } else date_display[i].innerHTML = "Nieprzydzielona";
-  }
 })();
 
 let intervalIdLeft;
