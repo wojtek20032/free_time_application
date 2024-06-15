@@ -157,7 +157,7 @@ img {
 }
 
 #card-inner {
-  height: 250px;
+  height: 300px;
   padding: 0 5%;
 }
 
@@ -182,7 +182,7 @@ img {
   background-color: #7a3803;
   color:#fcae1e ;
   border-radius: 10%;
-  margin-top:1%;
+  margin-top:3%;
   cursor:pointer;
 }
 
