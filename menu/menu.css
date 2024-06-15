@@ -173,6 +173,24 @@ img {
   color: #fcae1e;
 }
 
+.steps{
+  display:flex;
+  flex-direction: column;
+}
+
+.steps button{
+  background-color: #7a3803;
+  color:#fcae1e ;
+  border-radius: 10%;
+  margin-top:1%;
+  cursor:pointer;
+}
+
+#image-container img {
+    position: absolute;
+    display: none;
+}
+
 #data {
   height: 50px;
 }

@@ -80,3 +80,40 @@ const getData = async () => {
         }else date_display[i].innerHTML = "Nieprzydzielona";
     }
   })();
+
+let intervalId;
+let currentImage;
+
+function startMovingImage(src, x, y) {
+    const imageContainer = document.getElementById('image-container');
+    imageContainer.innerHTML = ''; // Clear any existing images
+    clearInterval(intervalId); // Clear any existing interval
+
+    currentImage = document.createElement('img');
+    currentImage.src = src;
+    currentImage.style.left = `${x}vw`;
+    currentImage.style.top = `${y}vh`;
+    currentImage.style.display = 'block';
+
+    imageContainer.appendChild(currentImage);
+
+    const step = 0.5;
+    let direction = 1;
+
+    intervalId = setInterval(() => {
+        y += step * direction;
+
+        if (y >= 15 || y <= 10) {
+            direction *= -1;
+        }
+
+        currentImage.style.top = `${y}vh`;
+    }, 50);
+}
+
+function stopMovingImage() {
+    clearInterval(intervalId);
+    if (currentImage) {
+        currentImage.style.display = 'none';
+    }
+}
