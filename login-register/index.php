@@ -1,25 +1,44 @@
-<?php include_once('../user.php'); ?>
-<?php include_once('../db.php'); ?>
+<?php include_once ('../user.php'); ?>
+<?php include_once ('../db.php'); ?>
 <?php
-    session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website With Login & Registration</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="menu.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid" style="display: block">
+                <div class="header">
+                    <a class="navbar-brand" href="../login-register/index.php.php">
+                        <h1>Kampa</h1>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
     <div class="wrapper">
         <div class="form-box login">
             <h2>Login</h2>
             <?php
-                if(isset($_SESSION['status'])){
-                    echo $_SESSION['status'];
-                    unset($_SESSION['status']);
-                }
+            if (isset($_SESSION['status'])) {
+                echo $_SESSION['status'];
+                unset($_SESSION['status']);
+            }
             ?>
             <form method="POST" id="login_form">
                 <div class="input-box">
@@ -41,23 +60,23 @@
                     <a href="#">Forgot Password?</a>
                 </div>
                 <button type="submit" name="Login_button" class="btn">Login</button>
-                <?php 
-                    if(isset($_POST['Login_button'])){
-                        $pass = sha1($_POST['passwd']);
-                        $user_to_verify = new User("empty", $_POST['log'], $pass);
-                        $mail = $user_to_verify->getEmail();
-                        $result = $user_to_verify->login($mail, $pass, $conn);
-                        if($result === true){
-                            $_SESSION['user_id'] = $user_to_verify->getId(); 
-                            $_SESSION['username'] = $user_to_verify->getName();
-                            header('location: ../menu/menu.php');
-                            exit();
-                        } else {
-                            $_SESSION['status'] = "Credentials do not match, verify them or register first";
-                            header('location: index.php');
-                            exit();
-                        }
+                <?php
+                if (isset($_POST['Login_button'])) {
+                    $pass = sha1($_POST['passwd']);
+                    $user_to_verify = new User("empty", $_POST['log'], $pass);
+                    $mail = $user_to_verify->getEmail();
+                    $result = $user_to_verify->login($mail, $pass, $conn);
+                    if ($result === true) {
+                        $_SESSION['user_id'] = $user_to_verify->getId();
+                        $_SESSION['username'] = $user_to_verify->getName();
+                        header('location: ../menu/menu.php');
+                        exit();
+                    } else {
+                        $_SESSION['status'] = "Credentials do not match, verify them or register first";
+                        header('location: index.php');
+                        exit();
                     }
+                }
                 ?>
                 <div class="login-register">
                     <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
@@ -92,22 +111,22 @@
                     <label><input type="checkbox" required> I agree to the ToS</label>
                 </div>
                 <button type="submit" class="btn" name="Register_button">Register</button>
-                <?php 
-                    if(isset($_POST['Register_button'])){
-                        $pass = sha1($_POST['password_register']);
-                        $user = new User($_POST['username_register'], $_POST['email_register'], $pass);
-                        $name = $user->getName();
-                        $mail = $user->getEmail();
-                        $query = "INSERT INTO users (Username, E_mail, hashed_password) VALUES ('$name', '$mail', '$pass')";
-                        $query_to_run = mysqli_query($conn, $query);
-                        if($query_to_run){
-                            $_SESSION['status'] = "User registered successfully";
-                            header('location: index.php');
-                            exit();
-                        }
-                        $conn->close();
-                        unset($_POST['Register_button']);
+                <?php
+                if (isset($_POST['Register_button'])) {
+                    $pass = sha1($_POST['password_register']);
+                    $user = new User($_POST['username_register'], $_POST['email_register'], $pass);
+                    $name = $user->getName();
+                    $mail = $user->getEmail();
+                    $query = "INSERT INTO users (Username, E_mail, hashed_password) VALUES ('$name', '$mail', '$pass')";
+                    $query_to_run = mysqli_query($conn, $query);
+                    if ($query_to_run) {
+                        $_SESSION['status'] = "User registered successfully";
+                        header('location: index.php');
+                        exit();
                     }
+                    $conn->close();
+                    unset($_POST['Register_button']);
+                }
                 ?>
                 <div class="login-register">
                     <p>Already have an account? <a href="#" class="login-link">Login</a></p>
@@ -119,4 +138,5 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
+
 </html>
