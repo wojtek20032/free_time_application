@@ -136,35 +136,33 @@ $id = $_SESSION['user_id'];
       </div>
       <div class="container-fluid" id="main-content">
         <div class="row">
-          <div class="col-12 col-xxl-4 mb-3" id="card-inner">
+          <div class="col-12 col-xxl-7 mb-3" id="card-inner">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">
+                  Nawigacja
                 </h5>
-                <div class="more">
-                  <a class="ModalBtn btn btn-success" href="../powiadomienia/powiadomienia.php">Zobacz wiecej</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-xxl-4 mb-3" id="card-inner">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">
-                </h5>
-                <div class="more">
-                  <a class="ModalBtn btn btn-success" href="../powiadomienia/powiadomienia.php">Zobacz wiecej</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-xxl-4 mb-3" id="card-inner">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">
-                </h5>
-                <div class="more">
-                  <a class="ModalBtn btn btn-success" href="../powiadomienia/powiadomienia.php">Zobacz wiecej</a>
+                <div class="steps">
+                  <button onclick="startMovingImageLeft('../icons/arrow.png',12,72)">
+                    <h5>
+                      Jeśli chcesz dodać nowy event, proszimy do Terminarzu
+                    </h5>
+                  </button>
+                  <button onclick="startMovingImageLeft('../icons/arrow.png',94,72)">
+                    <h5>
+                      Kalendarz pokaże ciebie twoje plany na przyszłość
+                    </h5>
+                  </button>
+                  <button onclick="startMovingImageRight('../icons/arrow.png',93,72)">
+                    <h5>
+                      Powiadomienia przypominają o najbliższych eventach
+                    </h5>
+                  </button>
+                  <button onclick="startMovingImageRight('../icons/arrow.png',12,72)">
+                    <h5>
+                      W Profilu możesz zmienić hasło
+                    </h5>
+                  </button>
                 </div>
               </div>
             </div>
@@ -172,6 +170,7 @@ $id = $_SESSION['user_id'];
         </div>
       </div>
     </main>
+    <div id="image-container"></div>
     <footer>
       <div class="container-fluid">
         <button onclick="openGoogleMaps()">
